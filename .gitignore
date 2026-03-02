@@ -1,0 +1,11 @@
+__pycache__/
+*.pyc
+.env
+data/raw/
+data/scored.json
+data/reports/
+data/archive/
+data/digest-*.md
+output/
+.venv/
+*.egg-info/

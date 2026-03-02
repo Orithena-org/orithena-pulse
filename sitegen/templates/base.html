@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>{% block title %}{{ site_title }}{% endblock %}</title>
+  <meta name="description" content="{{ tagline }}">
+  <link rel="alternate" type="application/rss+xml" title="{{ site_title }} RSS" href="/feed.xml">
+  <link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+  <header class="site-header">
+    <div class="header-inner">
+      <a href="/" class="site-name">{{ site_title }}</a>
+      <button id="theme-toggle" class="theme-toggle" aria-label="Toggle dark mode">
+        <span class="theme-icon-light">&#9790;</span>
+        <span class="theme-icon-dark">&#9788;</span>
+      </button>
+    </div>
+  </header>
+
+  <main class="content">
+    {% block content %}{% endblock %}
+  </main>
+
+  <footer class="site-footer">
+    <nav class="footer-nav">
+      <a href="/archive.html">Archive</a>
+      <span class="sep">&middot;</span>
+      <a href="/about.html">About</a>
+      <span class="sep">&middot;</span>
+      <a href="/feed.xml">RSS</a>
+    </nav>
+    <p class="powered-by">Powered by <a href="https://github.com/orithena-org/orithena">Orithena</a></p>
+  </footer>
+
+  <script src="/js/main.js"></script>
+</body>
+</html>

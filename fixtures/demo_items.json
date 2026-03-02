@@ -1,0 +1,256 @@
+[
+  {
+    "source": "hn",
+    "source_id": "hn_39284751",
+    "title": "Show HN: AgentKit \u2013 An open-source framework for building composable AI agents",
+    "url": "https://github.com/agentkit-ai/agentkit",
+    "published_at": "2026-03-02T08:15:00+00:00",
+    "fetched_at": "2026-03-02T12:00:00+00:00",
+    "author": "dyang42",
+    "description": "AgentKit is an open-source Python framework for building composable AI agents with built-in tool use, memory, and multi-agent coordination. It supports MCP natively and ships with adapters for Claude, GPT, and Gemini. The README includes benchmarks showing 40% fewer token round-trips compared to LangChain agents.",
+    "content_type": "launch",
+    "metadata": {
+      "points": 387,
+      "num_comments": 142,
+      "hn_url": "https://news.ycombinator.com/item?id=39284751"
+    }
+  },
+  {
+    "source": "hn",
+    "source_id": "hn_39285034",
+    "title": "How Claude's memory system actually works under the hood",
+    "url": "https://www.interconnects.ai/p/claude-memory-architecture",
+    "published_at": "2026-03-02T06:42:00+00:00",
+    "fetched_at": "2026-03-02T12:00:00+00:00",
+    "author": "nwerneck",
+    "description": "A deep technical analysis of how Anthropic's Claude implements persistent memory across conversations. The post reverse-engineers the memory retrieval system, examines how memories are compressed and prioritized, and compares it to OpenAI's approach with ChatGPT.",
+    "content_type": "article",
+    "metadata": {
+      "points": 612,
+      "num_comments": 289,
+      "hn_url": "https://news.ycombinator.com/item?id=39285034"
+    }
+  },
+  {
+    "source": "hn",
+    "source_id": "hn_39283198",
+    "title": "MCP adoption is accelerating: 200+ integrations now available",
+    "url": "https://modelcontextprotocol.io/ecosystem-report-march-2026",
+    "published_at": "2026-03-01T22:10:00+00:00",
+    "fetched_at": "2026-03-02T12:00:00+00:00",
+    "author": "swyx",
+    "description": "The Model Context Protocol ecosystem report for March 2026 shows over 200 production integrations across developer tools, databases, and enterprise software. Notable additions include native MCP support in VS Code, JetBrains IDEs, and Salesforce. The report argues MCP is becoming the USB-C of AI tool integration.",
+    "content_type": "article",
+    "metadata": {
+      "points": 453,
+      "num_comments": 198,
+      "hn_url": "https://news.ycombinator.com/item?id=39283198"
+    }
+  },
+  {
+    "source": "hn",
+    "source_id": "hn_39286412",
+    "title": "Multi-agent coordination is harder than it looks (lessons from production)",
+    "url": "https://blog.langchain.dev/multi-agent-coordination-lessons",
+    "published_at": "2026-03-02T10:30:00+00:00",
+    "fetched_at": "2026-03-02T12:00:00+00:00",
+    "author": "hwchase17",
+    "description": "Harrison Chase shares lessons learned from deploying multi-agent systems in production at LangChain. The post covers failure modes like agent deadlocks, context window exhaustion in long chains, and the surprising effectiveness of simple round-robin coordination over more sophisticated approaches.",
+    "content_type": "discussion",
+    "metadata": {
+      "points": 274,
+      "num_comments": 163,
+      "hn_url": "https://news.ycombinator.com/item?id=39286412"
+    }
+  },
+  {
+    "source": "arxiv",
+    "source_id": "arxiv_2603.01234",
+    "title": "Persistent Memory Architectures for Long-Horizon Agent Tasks",
+    "url": "https://arxiv.org/abs/2603.01234",
+    "published_at": "2026-03-01T18:00:00+00:00",
+    "fetched_at": "2026-03-02T12:00:00+00:00",
+    "author": "Wang et al.",
+    "description": "This paper introduces MemFormer, a transformer-based architecture that maintains a persistent external memory bank for long-horizon agentic tasks. The authors demonstrate that agents equipped with MemFormer complete multi-step coding tasks with 34% higher success rates than ReAct baselines, with memory retrieval adding less than 200ms of latency per step.",
+    "content_type": "paper",
+    "metadata": {
+      "authors": [
+        "Yichen Wang",
+        "Sarah Chen",
+        "Dmitri Volkov",
+        "Priya Narayan"
+      ],
+      "categories": [
+        "cs.AI",
+        "cs.CL",
+        "cs.LG"
+      ],
+      "pdf_url": "https://arxiv.org/pdf/2603.01234"
+    }
+  },
+  {
+    "source": "arxiv",
+    "source_id": "arxiv_2603.00871",
+    "title": "ToolBench-v2: Evaluating LLM Agents on 16,000 Real-World APIs",
+    "url": "https://arxiv.org/abs/2603.00871",
+    "published_at": "2026-03-01T14:30:00+00:00",
+    "fetched_at": "2026-03-02T12:00:00+00:00",
+    "author": "Qin et al.",
+    "description": "An expanded benchmark for evaluating tool-use capabilities of LLM agents across 16,000 real-world APIs spanning 49 categories. The paper finds that current frontier models solve 72% of single-tool tasks but only 31% of multi-tool compositional tasks, highlighting a significant gap in agent reliability for complex workflows.",
+    "content_type": "paper",
+    "metadata": {
+      "authors": [
+        "Yujia Qin",
+        "Shihao Liang",
+        "Kunlun Zhu",
+        "Yankai Lin",
+        "Zhiyuan Liu"
+      ],
+      "categories": [
+        "cs.CL",
+        "cs.AI",
+        "cs.SE"
+      ],
+      "pdf_url": "https://arxiv.org/pdf/2603.00871"
+    }
+  },
+  {
+    "source": "arxiv",
+    "source_id": "arxiv_2603.01587",
+    "title": "Emergent Specialization in Multi-Agent LLM Systems Without Explicit Role Assignment",
+    "url": "https://arxiv.org/abs/2603.01587",
+    "published_at": "2026-03-02T04:00:00+00:00",
+    "fetched_at": "2026-03-02T12:00:00+00:00",
+    "author": "Park et al.",
+    "description": "Researchers demonstrate that groups of LLM agents placed in shared environments spontaneously develop specialized roles without explicit prompting. In a simulated software development environment, agents self-organized into architect, implementer, and reviewer roles within 50 interactions, achieving comparable output quality to manually orchestrated pipelines.",
+    "content_type": "paper",
+    "metadata": {
+      "authors": [
+        "Joon Sung Park",
+        "Lindsay Popowski",
+        "Michael Bernstein",
+        "Percy Liang"
+      ],
+      "categories": [
+        "cs.MA",
+        "cs.AI",
+        "cs.CL"
+      ],
+      "pdf_url": "https://arxiv.org/pdf/2603.01587"
+    }
+  },
+  {
+    "source": "github",
+    "source_id": "github_letta-ai/letta",
+    "title": "letta-ai/letta: Stateful agents with long-term memory and tool use",
+    "url": "https://github.com/letta-ai/letta",
+    "published_at": "2026-03-02T00:00:00+00:00",
+    "fetched_at": "2026-03-02T12:00:00+00:00",
+    "author": "letta-ai",
+    "description": "Letta (formerly MemGPT) is a framework for creating stateful AI agents with persistent memory, tool use, and multi-agent orchestration. Version 0.8 introduces native MCP server support, a visual agent builder, and a managed cloud platform for deploying agents at scale.",
+    "content_type": "repo",
+    "metadata": {
+      "stars": 24850,
+      "language": "Python",
+      "topics": [
+        "ai-agents",
+        "memory",
+        "llm",
+        "tool-use",
+        "mcp"
+      ],
+      "forks": 2710
+    }
+  },
+  {
+    "source": "github",
+    "source_id": "github_modelcontextprotocol/servers",
+    "title": "modelcontextprotocol/servers: Reference MCP server implementations",
+    "url": "https://github.com/modelcontextprotocol/servers",
+    "published_at": "2026-03-01T00:00:00+00:00",
+    "fetched_at": "2026-03-02T12:00:00+00:00",
+    "author": "modelcontextprotocol",
+    "description": "The official repository of reference MCP server implementations maintained by Anthropic. Includes servers for filesystem access, GitHub, Slack, PostgreSQL, web search, and more. Recently added servers for Jira, Confluence, and Linear with full CRUD support.",
+    "content_type": "repo",
+    "metadata": {
+      "stars": 31420,
+      "language": "TypeScript",
+      "topics": [
+        "mcp",
+        "model-context-protocol",
+        "ai-tools",
+        "anthropic",
+        "claude"
+      ],
+      "forks": 4180
+    }
+  },
+  {
+    "source": "github",
+    "source_id": "github_crewAI/crewAI",
+    "title": "crewAI/crewAI: Framework for orchestrating autonomous AI agent crews",
+    "url": "https://github.com/crewAI/crewAI",
+    "published_at": "2026-03-02T00:00:00+00:00",
+    "fetched_at": "2026-03-02T12:00:00+00:00",
+    "author": "crewAI",
+    "description": "CrewAI is a framework for orchestrating role-playing AI agents that collaborate to solve complex tasks. The v3.0 release introduces a new flow engine for defining agent workflows as DAGs, built-in human-in-the-loop checkpoints, and a telemetry dashboard for monitoring agent performance in production.",
+    "content_type": "repo",
+    "metadata": {
+      "stars": 28930,
+      "language": "Python",
+      "topics": [
+        "ai-agents",
+        "multi-agent",
+        "orchestration",
+        "llm",
+        "autonomous-agents"
+      ],
+      "forks": 3950
+    }
+  },
+  {
+    "source": "rss",
+    "source_id": "rss_simonw_20260302_agents",
+    "title": "What I learned building an agent that manages my blog",
+    "url": "https://simonwillison.net/2026/Mar/2/blog-agent/",
+    "published_at": "2026-03-02T09:00:00+00:00",
+    "fetched_at": "2026-03-02T12:00:00+00:00",
+    "author": "Simon Willison",
+    "description": "Simon Willison describes building an AI agent that monitors his link blog queue, drafts posts, adds relevant context and links, and publishes after human approval. He shares insights on prompt design for consistency, the importance of conservative tool permissions, and why he chose MCP over custom integrations.",
+    "content_type": "article",
+    "metadata": {
+      "feed_name": "Simon Willison's Weblog",
+      "feed_url": "https://simonwillison.net/atom/everything/"
+    }
+  },
+  {
+    "source": "rss",
+    "source_id": "rss_anthropic_20260301_agent_patterns",
+    "title": "Patterns for reliable agentic systems in production",
+    "url": "https://www.anthropic.com/research/reliable-agent-patterns",
+    "published_at": "2026-03-01T16:00:00+00:00",
+    "fetched_at": "2026-03-02T12:00:00+00:00",
+    "author": "Anthropic Research",
+    "description": "Anthropic's applied research team shares six design patterns for building reliable agentic systems that have emerged from working with enterprise customers. The patterns cover graceful degradation, context window management, structured output validation, human escalation triggers, and audit logging for agent actions.",
+    "content_type": "article",
+    "metadata": {
+      "feed_name": "Anthropic Blog",
+      "feed_url": "https://www.anthropic.com/feed.xml"
+    }
+  },
+  {
+    "source": "rss",
+    "source_id": "rss_latentspace_20260302_agent_evals",
+    "title": "The agent eval problem: why benchmarks don't predict production performance",
+    "url": "https://www.latent.space/p/agent-eval-problem",
+    "published_at": "2026-03-02T07:30:00+00:00",
+    "fetched_at": "2026-03-02T12:00:00+00:00",
+    "author": "Alessio Fanelli & Swyx",
+    "description": "Latent Space podcast hosts argue that current agent benchmarks like SWE-bench and WebArena fail to predict real-world agent performance because they test isolated capabilities rather than the sustained multi-step reasoning and error recovery that define production use. They propose a new evaluation framework based on session-level success metrics and recovery rate from failures.",
+    "content_type": "article",
+    "metadata": {
+      "feed_name": "Latent Space",
+      "feed_url": "https://www.latent.space/feed"
+    }
+  }
+]

@@ -1,0 +1,40 @@
+{% extends "base.html" %}
+
+{% block title %}{{ site_title }} &mdash; {{ date_str }}{% endblock %}
+
+{% block content %}
+<div class="digest-header">
+  <h1>{{ site_title }}</h1>
+  <p class="tagline">{{ tagline }}</p>
+  <time class="digest-date" datetime="{{ date_str }}">{{ date_str }}</time>
+</div>
+
+{% for section in sections %}
+<section class="digest-section" data-section="{{ section.name | lower | replace(' ', '-') }}">
+  <h2 class="section-title">{{ section.name }}</h2>
+  <ul class="item-list">
+    {% for si in section["items"] %}
+    <li class="item">
+      <div class="item-header">
+        <span class="score-badge">[{{ "%.1f" | format(si.score) }}]</span>
+        <a href="{{ si.item.url }}" class="item-title" rel="noopener" target="_blank">{{ si.item.title }}</a>
+      </div>
+      {% if si.item.description %}
+      <p class="item-desc">{{ si.item.description | truncate_desc }}</p>
+      {% endif %}
+      <div class="item-meta">
+        <span class="source-label">{{ si | format_meta }}</span>
+        {% if si.tags %}
+        <span class="item-tags">
+          {% for tag in si.tags %}
+          <span class="tag">{{ tag }}</span>
+          {% endfor %}
+        </span>
+        {% endif %}
+      </div>
+    </li>
+    {% endfor %}
+  </ul>
+</section>
+{% endfor %}
+{% endblock %}

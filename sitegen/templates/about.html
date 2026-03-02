@@ -1,0 +1,51 @@
+{% extends "base.html" %}
+
+{% block title %}About &mdash; {{ site_title }}{% endblock %}
+
+{% block content %}
+<div class="page-header">
+  <h1>About {{ site_title }}</h1>
+</div>
+
+<div class="about-content">
+  <h2>What is Orithena Pulse?</h2>
+  <p>
+    Orithena Pulse is a daily digest of the most important AI developments,
+    curated automatically by the Orithena intelligence pipeline. Each day, Pulse
+    scrapes dozens of sources, deduplicates and scores every item for quality and
+    relevance, then publishes a single page of signal &mdash; no filler, no
+    engagement bait, just the developments that matter.
+  </p>
+
+  <h2>Methodology</h2>
+  <p>The pipeline runs in four stages:</p>
+  <ol>
+    <li><strong>Scrape</strong> &mdash; Adapters pull content from Hacker News,
+      arxiv, GitHub Trending, and curated RSS feeds.</li>
+    <li><strong>Deduplicate</strong> &mdash; URL normalization, title similarity,
+      and arxiv ID matching eliminate duplicate coverage.</li>
+    <li><strong>Score</strong> &mdash; A composite score (0&ndash;10) based on
+      novelty, relevance, community signal, and source authority determines what
+      makes the cut.</li>
+    <li><strong>Publish</strong> &mdash; Items that pass the quality threshold
+      are grouped into sections and rendered as a static site.</li>
+  </ol>
+
+  <h2>Sources</h2>
+  <ul>
+    <li><strong>Hacker News</strong> &mdash; Top stories filtered by AI/ML keywords</li>
+    <li><strong>arxiv</strong> &mdash; New papers in cs.AI, cs.LG, cs.CL, and related categories</li>
+    <li><strong>GitHub Trending</strong> &mdash; Repositories gaining traction in AI/ML</li>
+    <li><strong>RSS Feeds</strong> &mdash; Curated blogs and publications (OpenAI, Anthropic, DeepMind, etc.)</li>
+  </ul>
+
+  <h2>Open Source</h2>
+  <p>
+    Orithena Pulse is part of the
+    <a href="https://github.com/orithena-org/orithena" rel="noopener" target="_blank">Orithena</a>
+    project &mdash; an open platform for AI-assisted content intelligence.
+    The full source code, including scrapers, scoring logic, and this site
+    generator, is available on GitHub.
+  </p>
+</div>
+{% endblock %}
