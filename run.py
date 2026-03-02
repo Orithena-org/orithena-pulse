@@ -31,7 +31,6 @@ from curator.dedup import deduplicate
 from curator.scorer import score_items
 from intelligence.report import generate_report, save_report
 from intelligence.digest import generate_digest
-from intelligence.org_writer import write_to_org
 
 from sitegen.build import build_site
 
@@ -207,7 +206,7 @@ def stage_build_site(
 def stage_intelligence(
     scored_items: list[ScoredItem], domain_config: dict, date_str: str
 ) -> int:
-    """Stage 5: Generate intelligence reports, digest, and org output.
+    """Stage 5: Generate intelligence reports and digest.
 
     Returns:
         Number of individual reports generated.
@@ -238,15 +237,6 @@ def stage_intelligence(
         logger.info("Saved digest to %s", digest_path)
     except Exception:
         logger.exception("Error generating digest")
-        digest_text = None
-
-    # Write to org
-    if digest_text is not None:
-        try:
-            write_to_org(digest_text, scored_items, domain_config, date_str)
-            logger.info("Wrote intelligence to org")
-        except Exception:
-            logger.exception("Error writing to org")
 
     return reports_generated
 
