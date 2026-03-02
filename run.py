@@ -138,7 +138,7 @@ def stage_scrape(domain_config: dict) -> list[ContentItem]:
             continue
 
         try:
-            adapter = adapter_cls(domain_config)
+            adapter = adapter_cls(source_config)
             items = adapter.run()
             adapter.save_raw(items, source_name)
             all_items.extend(items)
