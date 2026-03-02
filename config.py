@@ -14,10 +14,6 @@ SITE_DIR = OUTPUT_DIR / "site"
 DOMAINS_DIR = PROJECT_ROOT / "domains"
 FIXTURES_DIR = PROJECT_ROOT / "fixtures"
 
-# Org integration
-ORG_ROOT = Path(os.getenv("ORG_ROOT", str(PROJECT_ROOT.parent / "orithena-org")))
-INTEL_DIR = ORG_ROOT / "intel" / "pulse"
-
 # Ensure directories exist
 for d in [DATA_DIR, RAW_DIR, ARCHIVE_DIR, REPORTS_DIR, OUTPUT_DIR, SITE_DIR]:
     d.mkdir(parents=True, exist_ok=True)
