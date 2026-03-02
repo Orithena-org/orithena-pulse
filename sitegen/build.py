@@ -8,7 +8,7 @@ from xml.sax.saxutils import escape as xml_escape
 
 from jinja2 import Environment, FileSystemLoader
 
-from config import SITE_DIR, SITE_TITLE, SITE_URL, DATA_DIR, PROJECT_ROOT
+from config import SITE_DIR, SITE_TITLE, SITE_URL, BASE_PATH, DATA_DIR, PROJECT_ROOT
 from models import ScoredItem
 
 logger = logging.getLogger(__name__)
@@ -77,8 +77,13 @@ def _group_into_sections(
         else None
     )
 
-    # Default section definitions
-    top_signal_count = 5
+    # Per-section count limits from config (default 5)
+    section_counts = {}
+    if sections_config:
+        for sc in sections_config:
+            section_counts[sc["name"]] = sc.get("count", 5)
+
+    top_signal_count = section_counts.get("Top Signal", 5)
     sections: list[dict] = []
 
     # --- Top Signal: top N by score ---
@@ -87,30 +92,33 @@ def _group_into_sections(
     sections.append({"name": "Top Signal", "items": top_items})
 
     # --- Papers ---
+    max_papers = section_counts.get("Papers", 5)
     papers = [
         si
         for si in sorted_items
         if si.item.content_type == "paper" and id(si) not in top_ids
-    ]
+    ][:max_papers]
     if papers:
         sections.append({"name": "Papers", "items": papers})
 
     # --- Launches & Repos ---
+    max_launches = section_counts.get("Launches & Repos", 5)
     launches = [
         si
         for si in sorted_items
         if si.item.content_type in ("repo", "launch") and id(si) not in top_ids
-    ]
+    ][:max_launches]
     if launches:
         sections.append({"name": "Launches & Repos", "items": launches})
 
     # --- Discussion ---
+    max_discussion = section_counts.get("Discussion", 5)
     discussion = [
         si
         for si in sorted_items
         if si.item.content_type in ("article", "discussion")
         and id(si) not in top_ids
-    ]
+    ][:max_discussion]
     if discussion:
         sections.append({"name": "Discussion", "items": discussion})
 
@@ -174,7 +182,7 @@ def _build_rss_feed(
         f"    <link>{xml_escape(site_url)}</link>\n"
         f"    <description>{xml_escape(tagline)}</description>\n"
         f"    <lastBuildDate>{build_date}</lastBuildDate>\n"
-        f'    <atom:link href="{xml_escape(site_url)}/feed.xml" '
+        f'    <atom:link href="{xml_escape(site_url + "/feed.xml")}" '
         f'rel="self" type="application/rss+xml"/>\n'
         f"{items_str}\n"
         "  </channel>\n"
@@ -228,6 +236,7 @@ def build_site(
     base_context = {
         "site_title": SITE_TITLE,
         "site_url": SITE_URL,
+        "base_path": BASE_PATH,
         "tagline": site_config.get("tagline", "Daily AI signal digest"),
         "date_str": date_str,
     }

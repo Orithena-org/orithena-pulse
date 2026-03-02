@@ -93,7 +93,7 @@ scoring:
     engagement: 0.15       # Social proof (points, stars, citations)
 
   # Minimum composite score to pass curation (0-10 scale)
-  threshold: 4.0
+  threshold: 3.0
 
   # Keywords that boost relevance score
   high_signal_keywords:

@@ -169,11 +169,11 @@ def _score_engagement(
     """
     meta = item.metadata or {}
 
-    if item.source == "hackernews":
+    if item.source == "hn":
         points = meta.get("points", 0) or 0
-        comments = meta.get("comments", 0) or 0
+        comments = meta.get("num_comments", 0) or 0
         score = points / 50.0 + comments / 20.0
-    elif item.source == "github":
+    elif item.source == "github_trending":
         stars = meta.get("stars", 0) or 0
         score = stars / 100.0
     else:
