@@ -14,13 +14,29 @@
   <h2 class="section-title">{{ section.name }}</h2>
   <ul class="item-list">
     {% for si in section["items"] %}
-    <li class="item">
+    <li class="item{% if si.high_signal %} high-signal-item{% endif %}">
       <div class="item-header">
         <span class="score-badge">[{{ "%.1f" | format(si.score) }}]</span>
+        {% if si.high_signal %}
+        <span class="high-signal-badge">&#128293; High Signal</span>
+        {% endif %}
         <a href="{{ si.item.url }}" class="item-title" rel="noopener" target="_blank">{{ si.item.title }}</a>
       </div>
       {% if si.item.description %}
       <p class="item-desc">{{ si.item.description | truncate_desc }}</p>
+      {% endif %}
+      {% if si.fit and si.fit.why_unique %}
+      <p class="item-unique"><strong>Why unique:</strong> {{ si.fit.why_unique }}</p>
+      {% endif %}
+      {% if si.fit and si.fit.fit_score %}
+      <p class="item-fit">
+        <strong>Orithena Fit:</strong>
+        {{ si.fit.product | default("neither") }} &middot;
+        Score {{ si.fit.fit_score }}/10
+        {% if si.fit.implementation_sketch and si.fit.implementation_sketch != "not applicable" %}
+        &middot; {{ si.fit.implementation_sketch }}
+        {% endif %}
+      </p>
       {% endif %}
       <div class="item-meta">
         <span class="source-label">{{ si | format_meta }}</span>

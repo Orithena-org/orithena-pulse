@@ -194,10 +194,11 @@ def generate_report(
 ) -> IntelReport:
     """Generate a structured intelligence report for a scored item.
 
-    Phase 1 implementation uses rule-based extraction without LLM calls.
+    Uses rule-based extraction plus LLM-generated fit evaluation
+    (from scored_item.fit) when available.
 
     Args:
-        scored_item: The scored content item.
+        scored_item: The scored content item (may include .fit data).
         domain_config: The full domain configuration dict.
 
     Returns:
@@ -230,6 +231,11 @@ def generate_report(
     # Links: primary URL + metadata URLs
     links = _collect_links(item)
 
+    # Fit evaluation data (from LLM or placeholder)
+    fit = scored_item.fit or {}
+    why_unique = fit.get("why_unique", "")
+    is_high_signal = scored_item.high_signal
+
     return IntelReport(
         item=item,
         score=scored_item.score,
@@ -241,6 +247,9 @@ def generate_report(
         code_snippets=code_snippets,
         links=links,
         generated_at=datetime.now(timezone.utc).isoformat(),
+        why_unique=why_unique,
+        fit=fit,
+        high_signal=is_high_signal,
     )
 
 
@@ -256,18 +265,44 @@ def _report_to_markdown(report: IntelReport) -> str:
     tags_str = ", ".join(report.key_concepts) if report.key_concepts else "none"
     date_str = report.generated_at[:10] if report.generated_at else "unknown"
 
+    high_signal_label = " | **🔥 High Signal**" if report.high_signal else ""
+
     lines = [
         f"# {report.item.title}",
         "",
         f"**Source:** {report.item.source} | "
         f"**Published:** {report.item.published_at[:10]} | "
-        f"**Score:** {report.score}/10",
+        f"**Score:** {report.score}/10{high_signal_label}",
         f"**URL:** {report.item.url}",
         f"**Tags:** {tags_str}",
         "",
         "## What It Is",
         report.what_it_is,
         "",
+    ]
+
+    # Why This Is Unique (from LLM fit evaluation)
+    if report.why_unique:
+        lines.extend([
+            "## Why This Is Unique",
+            report.why_unique,
+            "",
+        ])
+
+    # Orithena Fit section (from LLM fit evaluation)
+    if report.fit:
+        fit = report.fit
+        relevant_str = "Yes" if fit.get("relevant") else "No"
+        lines.extend([
+            "## Orithena Fit",
+            f"- **Relevant:** {relevant_str} — {fit.get('relevant_why', 'N/A')}",
+            f"- **Product:** {fit.get('product', 'neither')}",
+            f"- **Implementation sketch:** {fit.get('implementation_sketch', 'not applicable')}",
+            f"- **Fit score:** {fit.get('fit_score', 5)}/10",
+            "",
+        ])
+
+    lines.extend([
         "## Novel Aspects",
         report.novel_aspects,
         "",
@@ -277,7 +312,7 @@ def _report_to_markdown(report: IntelReport) -> str:
         "## Recommended Action",
         f"**{report.recommended_action}**",
         "",
-    ]
+    ])
 
     # Action rationale
     rationale = {
