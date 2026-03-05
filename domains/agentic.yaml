@@ -77,6 +77,8 @@ sources:
         url: "https://www.anthropic.com/rss.xml"
       - name: "OpenAI Blog"
         url: "https://openai.com/blog/rss.xml"
+      - name: "OpenAI Engineering Blog"
+        url: "https://openai.com/news/engineering/"
       - name: "Google DeepMind Blog"
         url: "https://deepmind.google/blog/rss.xml"
       - name: "Hugging Face Blog"
