@@ -77,6 +77,9 @@ sources:
         url: "https://www.anthropic.com/rss.xml"
       - name: "OpenAI News"
         url: "https://openai.com/news/rss.xml"
+        # Note: openai.com/news/rss.xml already includes /index/ posts
+        # (research, engineering like "Harness Engineering"). No separate
+        # /index/ or /research/ feed exists. Verified 2026-03-05.
       - name: "Google DeepMind Blog"
         url: "https://deepmind.google/blog/rss.xml"
       - name: "Hugging Face Blog"
