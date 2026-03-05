@@ -1,26 +1,30 @@
-# Orithena Pulse Git Rules
+# Orithena Pulse — Content Intelligence Pipeline
 
-These rules apply to every Claude Code invocation in this workspace. No exceptions.
+Content intelligence pipeline. Scrapes domain-specific sources, scores and curates content, builds a site, and generates intelligence reports.
 
-## Branch Policy
+For system-wide context, see `../CLAUDE.md`. For the org mission, see `../orithena-org/NORTH_STAR.md`.
 
-Check the `ORITHENA_AGENT_RUN` environment variable to determine the correct workflow:
+## Key Commands
 
-**If `ORITHENA_AGENT_RUN` is set** (autonomous agent run):
-- Use `scout/<name>` branches and PRs — never push to main.
+| Command | What it does |
+|---|---|
+| `make run` | Full pipeline (scrape -> curate -> build -> intel) |
+| `make scrape DOMAIN=x` | Scrape sources for a domain |
+| `make curate` | Score and filter cached data |
+| `make build` | Build site from scored data |
+| `make intel` | Generate intelligence reports |
 
-**If `ORITHENA_AGENT_RUN` is not set** (human interactive session):
-- Push directly to main.
+## Git Rules
 
-Always pull latest main before starting: `git pull origin main`.
+Check `ORITHENA_AGENT_RUN` to determine workflow:
 
-## Commit and Push
+- **Agent run** (`ORITHENA_AGENT_RUN` is set): use `scout/<name>` branches and PRs — never push to main
+- **Human session** (`ORITHENA_AGENT_RUN` is not set): push directly to main
 
-- Commit after every meaningful unit of work.
-- Push after every commit: `git push origin HEAD`.
-- Write clear commit messages that describe *what changed and why*.
+Always pull latest before starting: `git pull origin main`.
+Commit after every meaningful unit of work. Push after every commit.
 
-## Forbidden
+### Forbidden
 
-- `git push --force` — never, on any branch, for any reason.
-- `git reset --hard` — never discard work.
+- `git push --force` — never, on any branch, for any reason
+- `git reset --hard` — never discard work
