@@ -18,6 +18,7 @@ import argparse
 import importlib
 import json
 import logging
+import os
 import sys
 from datetime import datetime, timezone
 from pathlib import Path
@@ -437,6 +438,13 @@ def main() -> None:
 
     # Stage 5: Intelligence
     n_reports = stage_intelligence(passed, domain_config, date_str)
+
+    # Stage 6: Post to Discord (if webhook configured)
+    webhook_url = os.environ.get("DISCORD_WEBHOOK_PULSE")
+    if webhook_url:
+        from discord_poster import post_signals
+        logger.info("=== Stage 6: Discord ===")
+        post_signals(webhook_url)
 
     # Summary
     _print_summary(n_scraped, n_deduped, n_passed, n_reports, date_str)
