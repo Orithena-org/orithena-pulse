@@ -89,6 +89,17 @@ class ScoredItem:
     scores: dict             # Breakdown: {"novelty": 7.5, "relevance": 8.0, ...}
     passed_threshold: bool   # Whether it meets minimum quality bar
     tags: list[str] = field(default_factory=list)  # Auto-assigned tags from domain
+    fit: dict = field(default_factory=dict)  # Orithena fit evaluation
+
+    @property
+    def fit_score(self) -> int:
+        """Convenience accessor for the fit score (1-10, default 5)."""
+        return self.fit.get("fit_score", 5) if self.fit else 5
+
+    @property
+    def high_signal(self) -> bool:
+        """True if fit_score >= 7."""
+        return self.fit_score >= 7
 
     def to_dict(self) -> dict:
         """Serialize to a plain dict for JSON storage."""
@@ -98,6 +109,7 @@ class ScoredItem:
             "scores": self.scores,
             "passed_threshold": self.passed_threshold,
             "tags": self.tags,
+            "fit": self.fit,
         }
 
     @classmethod
@@ -109,6 +121,7 @@ class ScoredItem:
             scores=data["scores"],
             passed_threshold=data["passed_threshold"],
             tags=data.get("tags", []),
+            fit=data.get("fit", {}),
         )
 
 
@@ -125,6 +138,9 @@ class IntelReport:
     code_snippets: list[str] = field(default_factory=list)  # Key code if applicable
     links: list[str] = field(default_factory=list)  # Related links
     generated_at: str = ""   # ISO 8601
+    why_unique: str = ""     # What makes this item stand out
+    fit: dict = field(default_factory=dict)  # Orithena fit evaluation
+    high_signal: bool = False  # True if fit_score >= 7
 
     def to_dict(self) -> dict:
         """Serialize to a plain dict for JSON storage."""
@@ -139,6 +155,9 @@ class IntelReport:
             "code_snippets": self.code_snippets,
             "links": self.links,
             "generated_at": self.generated_at,
+            "why_unique": self.why_unique,
+            "fit": self.fit,
+            "high_signal": self.high_signal,
         }
 
     @classmethod
@@ -155,4 +174,7 @@ class IntelReport:
             code_snippets=data.get("code_snippets", []),
             links=data.get("links", []),
             generated_at=data.get("generated_at", ""),
+            why_unique=data.get("why_unique", ""),
+            fit=data.get("fit", {}),
+            high_signal=data.get("high_signal", False),
         )

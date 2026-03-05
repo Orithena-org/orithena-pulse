@@ -31,6 +31,7 @@ from curator.dedup import deduplicate
 from curator.scorer import score_items
 from intelligence.report import generate_report, save_report
 from intelligence.digest import generate_digest
+from intelligence.fit_evaluator import evaluate_fits
 
 from sitegen.build import build_site
 
@@ -189,6 +190,38 @@ def stage_curate(
         "Curation: %d scored, %d passed threshold", len(scored), len(passed)
     )
     return passed
+
+
+def stage_fit_evaluation(
+    scored_items: list[ScoredItem],
+) -> list[ScoredItem]:
+    """Stage 3.5: Evaluate Orithena fit for each item via LLM.
+
+    Enriches each ScoredItem with fit data (why_unique, fit_score, etc.).
+    Degrades gracefully if API is unavailable. Re-persists scored.json
+    so that --build-only and --intel-only pick up the fit data.
+
+    Returns:
+        The same list with fit data attached.
+    """
+    logger.info("=== Stage 3.5: Fit Evaluation ===")
+    fits = evaluate_fits(scored_items)
+    for item in scored_items:
+        slug = item.item.slug
+        if slug in fits:
+            item.fit = fits[slug]
+    n_high = sum(1 for item in scored_items if item.high_signal)
+    logger.info("Fit evaluation: %d items, %d high signal", len(scored_items), n_high)
+
+    # Re-persist scored.json with fit data included
+    scored_path = DATA_DIR / "scored.json"
+    scored_path.write_text(
+        json.dumps([s.to_dict() for s in scored_items], indent=2, ensure_ascii=False),
+        encoding="utf-8",
+    )
+    logger.info("Updated scored.json with fit data")
+
+    return scored_items
 
 
 def stage_build_site(
@@ -395,6 +428,9 @@ def main() -> None:
     # Stage 3: Score / Curate
     passed = stage_curate(deduped, domain_config)
     n_passed = len(passed)
+
+    # Stage 3.5: Fit Evaluation
+    passed = stage_fit_evaluation(passed)
 
     # Stage 4: Build Site
     stage_build_site(passed, domain_config, date_str)

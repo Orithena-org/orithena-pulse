@@ -62,6 +62,16 @@ a:hover { color: var(--link-h); text-decoration: underline; }
 .item-tags { display: flex; gap: 0.3rem; flex-wrap: wrap; }
 .tag { font-size: 0.7rem; background: var(--tag-bg); color: var(--tag-text); border-radius: 3px; padding: 0.1rem 0.4rem; }
 
+/* High signal */
+.high-signal-item { border-left: 3px solid #e25822; padding-left: 0.5rem; }
+.high-signal-badge { font-size: 0.7rem; font-weight: 600; color: #e25822; background: rgba(226,88,34,0.1); border-radius: 3px; padding: 0.1rem 0.4rem; white-space: nowrap; flex-shrink: 0; }
+[data-theme="dark"] .high-signal-badge { color: #ff8c5a; background: rgba(255,140,90,0.15); }
+[data-theme="dark"] .high-signal-item { border-left-color: #ff8c5a; }
+.item-unique { color: var(--text); font-size: 0.83rem; margin-top: 0.2rem; line-height: 1.5; }
+.item-fit { color: var(--muted); font-size: 0.8rem; margin-top: 0.15rem; line-height: 1.5; }
+[data-section="high-signal"] .section-title { color: #e25822; }
+[data-theme="dark"] [data-section="high-signal"] .section-title { color: #ff8c5a; }
+
 /* Archive list */
 .archive-list { list-style: none; }
 .archive-list li { padding: 0.4rem 0; border-bottom: 1px solid var(--border); font-size: 0.95rem; }

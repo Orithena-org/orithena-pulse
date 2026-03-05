@@ -86,9 +86,18 @@ def _group_into_sections(
     top_signal_count = section_counts.get("Top Signal", 5)
     sections: list[dict] = []
 
-    # --- Top Signal: top N by score ---
-    top_items = sorted_items[:top_signal_count]
-    top_ids = {id(si) for si in top_items}
+    # --- High Signal: items with fit_score >= 7 (shown first) ---
+    high_signal_items = [si for si in sorted_items if si.high_signal]
+    high_signal_ids = set()
+    if high_signal_items:
+        high_signal_ids = {id(si) for si in high_signal_items}
+        sections.append({"name": "High Signal", "items": high_signal_items})
+
+    # --- Top Signal: top N by score (excluding high-signal items) ---
+    top_items = [
+        si for si in sorted_items if id(si) not in high_signal_ids
+    ][:top_signal_count]
+    top_ids = {id(si) for si in top_items} | high_signal_ids
     sections.append({"name": "Top Signal", "items": top_items})
 
     # --- Papers ---
