@@ -23,6 +23,7 @@ from config import DATA_DIR
 logger = logging.getLogger(__name__)
 
 POSTED_FILE = DATA_DIR / "discord_posted.json"
+STATE_FILE = DATA_DIR / "discord_state.json"
 SCORED_FILE = DATA_DIR / "scored.json"
 
 # Content type -> embed color
@@ -109,7 +110,50 @@ def build_embed(scored: dict) -> dict:
     return embed
 
 
-def post_signals(webhook_url: str, top_n: int = 10, dry_run: bool = False) -> int:
+def load_state() -> dict:
+    """Load discord posting state (last_message_id, etc.)."""
+    if STATE_FILE.exists():
+        try:
+            return json.loads(STATE_FILE.read_text(encoding="utf-8"))
+        except (json.JSONDecodeError, TypeError):
+            return {}
+    return {}
+
+
+def save_state(state: dict) -> None:
+    """Persist discord posting state."""
+    STATE_FILE.write_text(json.dumps(state, indent=2), encoding="utf-8")
+
+
+def check_last_post_reactions(state: dict) -> bool:
+    """Check if the last posted message has at least 1 reaction."""
+    last_msg_id = state.get("last_message_id")
+    channel_id = os.environ.get("DISCORD_CHANNEL_PULSE")
+    bot_token = os.environ.get("DISCORD_BOT_TOKEN")
+
+    if not all([last_msg_id, channel_id, bot_token]):
+        logger.warning("Missing last_message_id, DISCORD_CHANNEL_PULSE, or DISCORD_BOT_TOKEN for reaction check")
+        return False
+
+    try:
+        resp = requests.get(
+            f"https://discord.com/api/v10/channels/{channel_id}/messages/{last_msg_id}",
+            headers={"Authorization": f"Bot {bot_token}"},
+            timeout=10,
+        )
+        if resp.status_code != 200:
+            logger.warning("Failed to fetch last message: HTTP %d", resp.status_code)
+            return False
+        msg = resp.json()
+        reactions = msg.get("reactions", [])
+        total = sum(r.get("count", 0) for r in reactions)
+        return total >= 1
+    except requests.RequestException as e:
+        logger.warning("Error checking reactions: %s", e)
+        return False
+
+
+def post_signals(webhook_url: str, top_n: int = 5, dry_run: bool = False) -> int:
     """Post top scored signals to Discord. Returns count posted."""
     scored_items = load_scored()
     if not scored_items:
@@ -135,6 +179,8 @@ def post_signals(webhook_url: str, top_n: int = 10, dry_run: bool = False) -> in
 
     logger.info("Found %d new signals to post (top %d)", len(to_post), top_n)
 
+    state = load_state()
+    last_message_id = None
     count = 0
     for scored in to_post:
         embed = build_embed(scored)
@@ -147,19 +193,27 @@ def post_signals(webhook_url: str, top_n: int = 10, dry_run: bool = False) -> in
 
         payload = {"embeds": [embed]}
         try:
-            resp = requests.post(webhook_url, json=payload, timeout=10)
+            resp = requests.post(f"{webhook_url}?wait=true", json=payload, timeout=10)
             if resp.status_code in (200, 204):
                 posted.add(source_id)
                 count += 1
                 logger.info("Posted: %s (score: %.1f)", scored["item"].get("title"), scored.get("score", 0))
+                try:
+                    last_message_id = resp.json().get("id")
+                except (ValueError, KeyError):
+                    pass
             elif resp.status_code == 429:
                 retry_after = resp.json().get("retry_after", 5)
                 logger.warning("Rate limited, waiting %.1fs", retry_after)
                 time.sleep(retry_after)
-                resp = requests.post(webhook_url, json=payload, timeout=10)
+                resp = requests.post(f"{webhook_url}?wait=true", json=payload, timeout=10)
                 if resp.status_code in (200, 204):
                     posted.add(source_id)
                     count += 1
+                    try:
+                        last_message_id = resp.json().get("id")
+                    except (ValueError, KeyError):
+                        pass
             else:
                 logger.error("Failed to post %s: HTTP %d", scored["item"].get("title"), resp.status_code)
         except requests.RequestException as e:
@@ -169,6 +223,9 @@ def post_signals(webhook_url: str, top_n: int = 10, dry_run: bool = False) -> in
 
     if not dry_run:
         save_posted(posted)
+        if last_message_id:
+            state["last_message_id"] = last_message_id
+            save_state(state)
 
     logger.info("Posted %d/%d new signals", count, len(to_post))
     return count
@@ -183,13 +240,24 @@ def main():
 
     parser = argparse.ArgumentParser(description="Post signals to Discord")
     parser.add_argument("--dry-run", action="store_true", help="Preview without posting")
-    parser.add_argument("--top", type=int, default=10, help="Number of top items to post (default: 10)")
+    parser.add_argument("--top", type=int, default=5, help="Number of top items to post (default: 5)")
+    parser.add_argument("--more", action="store_true", help="Post next batch only if last post got reactions")
     args = parser.parse_args()
 
     webhook_url = os.environ.get("DISCORD_WEBHOOK_PULSE")
     if not webhook_url:
         logger.warning("DISCORD_WEBHOOK_PULSE not set, skipping Discord posting")
         return
+
+    if args.more:
+        state = load_state()
+        if not state.get("last_message_id"):
+            logger.info("No previous post found — run without --more first")
+            return
+        if not check_last_post_reactions(state):
+            logger.info("No reactions yet on last post — skipping.")
+            return
+        logger.info("Last post has reactions, posting next batch")
 
     post_signals(webhook_url, top_n=args.top, dry_run=args.dry_run)
 
