@@ -30,3 +30,9 @@ demo:                       ## Run with sample data (no network)
 
 clean:                      ## Remove all generated data and output
 	rm -rf data/raw/* data/scored.json data/reports/ output/site/*
+
+run-new:                    ## Run unified pipeline in shadow mode (no Discord posting)
+	cd ../orithena-org && $(PYTHON) -m content.pipeline --domain pulse --no-post
+
+run-new-demo:               ## Run unified pipeline with demo data
+	cd ../orithena-org && $(PYTHON) -m content.pipeline --domain pulse --demo --no-post
