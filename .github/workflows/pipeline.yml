@@ -40,9 +40,7 @@ jobs:
           cache-dependency-path: orithena-pulse/requirements.txt
 
       - name: Install dependencies
-        run: |
-          pip install -r orithena-pulse/requirements.txt
-          pip install beautifulsoup4 python-dateutil
+        run: pip install -r orithena-pulse/requirements.txt
 
       - name: Run pipeline (scrape + build, no Discord posting)
         working-directory: orithena-org
