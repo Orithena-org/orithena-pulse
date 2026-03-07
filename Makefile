@@ -1,38 +1,30 @@
-PYTHON ?= python3
-DOMAIN ?= agentic
+# Orithena Pulse - Makefile
+# GitHub Pages shell. Pipeline lives in orithena-org/content/
 
-.PHONY: help run scrape curate build intel serve demo clean
+PYTHON ?= python3
+DOMAIN ?= pulse
+ORG_DIR = ../orithena-org
+
+.PHONY: help run scrape build demo clean serve
 
 help:                       ## Show this help
 	@grep -E '^[a-zA-Z_-]+:.*?## .*$$' $(MAKEFILE_LIST) | sort | \
 		awk 'BEGIN {FS = ":.*?## "}; {printf "\033[36m%-20s\033[0m %s\n", $$1, $$2}'
 
-run:                        ## Full pipeline (scrape → curate → build → intel)
-	$(PYTHON) run.py --domain $(DOMAIN)
+run:                        ## Full pipeline (scrape + curate + build + post)
+	cd $(ORG_DIR) && $(PYTHON) -m content.pipeline --domain $(DOMAIN)
 
 scrape:                     ## Only scrape sources
-	$(PYTHON) run.py --domain $(DOMAIN) --scrape-only
+	cd $(ORG_DIR) && $(PYTHON) -m content.pipeline --domain $(DOMAIN) --scrape-only
 
-curate:                     ## Only curate (score + filter cached data)
-	$(PYTHON) run.py --domain $(DOMAIN) --curate-only
+build:                      ## Only build site from cached data
+	cd $(ORG_DIR) && $(PYTHON) -m content.pipeline --domain $(DOMAIN) --build-only
 
-build:                      ## Only build site from cached scored data
-	$(PYTHON) run.py --domain $(DOMAIN) --build-only
-
-intel:                      ## Only generate intelligence reports
-	$(PYTHON) run.py --domain $(DOMAIN) --intel-only
+demo:                       ## Run with sample data (no network)
+	cd $(ORG_DIR) && $(PYTHON) -m content.pipeline --domain $(DOMAIN) --demo --no-post
 
 serve: build                ## Build and serve locally on port 8003
 	cd output/site && $(PYTHON) -m http.server 8003
 
-demo:                       ## Run with sample data (no network)
-	$(PYTHON) run.py --domain $(DOMAIN) --demo
-
 clean:                      ## Remove all generated data and output
 	rm -rf data/raw/* data/scored.json data/reports/ output/site/*
-
-run-new:                    ## Run unified pipeline in shadow mode (no Discord posting)
-	cd ../orithena-org && $(PYTHON) -m content.pipeline --domain pulse --no-post
-
-run-new-demo:               ## Run unified pipeline with demo data
-	cd ../orithena-org && $(PYTHON) -m content.pipeline --domain pulse --demo --no-post
