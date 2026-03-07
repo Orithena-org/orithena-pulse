@@ -1,0 +1,427 @@
+/Users/georgeauto/Library/Python/3.9/lib/python/site-packages/urllib3/__init__.py:35: NotOpenSSLWarning: urllib3 v2 only supports OpenSSL 1.1.1+, currently the 'ssl' module is compiled with 'LibreSSL 2.8.3'. See: https://github.com/urllib3/urllib3/issues/3020
+  warnings.warn(
+2026-03-06 08:00:00,759 INFO pulse: Orithena Pulse starting — domain=agentic, date=2026-03-06
+2026-03-06 08:00:00,781 INFO pulse: Loaded domain config: Agentic AI
+2026-03-06 08:00:00,781 INFO pulse: === Stage 1: Scrape ===
+2026-03-06 08:00:00,782 INFO scraper.base: Running adapter: hn
+2026-03-06 08:00:12,808 INFO scraper.hn: HN adapter collected 12 unique items
+2026-03-06 08:00:12,808 INFO scraper.base: Adapter hn fetched 12 items
+2026-03-06 08:00:12,810 INFO scraper.base: Saved 12 raw items to /Users/georgeauto/orithena/orithena-pulse/data/raw/hn/2026-03-06.json
+2026-03-06 08:00:12,810 INFO pulse: Source hn: fetched 12 items
+2026-03-06 08:00:12,812 INFO scraper.base: Running adapter: arxiv
+2026-03-06 08:00:13,420 INFO scraper.arxiv: arXiv adapter collected 100 items
+2026-03-06 08:00:13,420 INFO scraper.base: Adapter arxiv fetched 100 items
+2026-03-06 08:00:13,425 INFO scraper.base: Saved 100 raw items to /Users/georgeauto/orithena/orithena-pulse/data/raw/arxiv/2026-03-06.json
+2026-03-06 08:00:13,425 INFO pulse: Source arxiv: fetched 100 items
+2026-03-06 08:00:13,426 INFO scraper.base: Running adapter: github_trending
+2026-03-06 08:00:35,584 INFO scraper.github_trending: GitHub trending adapter collected 328 unique repos
+2026-03-06 08:00:35,584 INFO scraper.base: Adapter github_trending fetched 328 items
+2026-03-06 08:00:35,597 INFO scraper.base: Saved 328 raw items to /Users/georgeauto/orithena/orithena-pulse/data/raw/github_trending/2026-03-06.json
+2026-03-06 08:00:35,597 INFO pulse: Source github_trending: fetched 328 items
+2026-03-06 08:00:35,598 INFO scraper.base: Running adapter: rss
+2026-03-06 08:00:37,887 WARNING scraper.rss: RSS feed 'The Batch (deeplearning.ai)' had parse errors and no entries: <unknown>:2:4391: not well-formed (invalid token)
+2026-03-06 08:00:44,506 WARNING scraper.rss: RSS feed 'Anthropic Blog' had parse errors and no entries: <unknown>:2:3549: not well-formed (invalid token)
+2026-03-06 08:00:49,080 INFO scraper.rss: RSS adapter collected 19 items
+2026-03-06 08:00:49,080 INFO scraper.base: Adapter rss fetched 19 items
+2026-03-06 08:00:49,084 INFO scraper.base: Saved 19 raw items to /Users/georgeauto/orithena/orithena-pulse/data/raw/rss/2026-03-06.json
+2026-03-06 08:00:49,084 INFO pulse: Source rss: fetched 19 items
+2026-03-06 08:00:49,084 INFO pulse: Scrape complete: 459 total items
+2026-03-06 08:00:49,084 INFO pulse: === Stage 2: Deduplicate ===
+2026-03-06 08:00:49,230 INFO pulse: Dedup: 459 -> 459 items
+2026-03-06 08:00:49,230 INFO pulse: === Stage 3: Score / Curate ===
+2026-03-06 08:00:49,375 INFO pulse: Saved 459 scored items to /Users/georgeauto/orithena/orithena-pulse/data/scored.json
+2026-03-06 08:00:49,375 INFO pulse: Curation: 459 scored, 353 passed threshold
+2026-03-06 08:00:49,376 INFO pulse: === Stage 3.5: Fit Evaluation ===
+2026-03-06 08:00:54,426 WARNING intelligence.fit_evaluator: Claude HTTP API call failed: Expecting value: line 1 column 1 (char 0)
+2026-03-06 08:00:54,426 INFO intelligence.fit_evaluator: API unavailable — using placeholders for all items
+2026-03-06 08:00:54,427 INFO intelligence.fit_evaluator: Evaluated fit for 353 items (API available: False)
+2026-03-06 08:00:54,428 INFO pulse: Fit evaluation: 353 items, 0 high signal
+2026-03-06 08:00:54,484 INFO pulse: Updated scored.json with fit data
+2026-03-06 08:00:54,484 INFO pulse: === Stage 4: Build Site ===
+2026-03-06 08:00:54,484 INFO sitegen.build: Building site for 2026-03-06 with 353 items
+2026-03-06 08:00:54,506 INFO sitegen.build: Wrote index.html
+2026-03-06 08:00:54,508 INFO sitegen.build: Wrote archive/2026-03-06.html
+2026-03-06 08:00:54,512 INFO sitegen.build: Wrote archive.html with 3 dates
+2026-03-06 08:00:54,516 INFO sitegen.build: Wrote about.html
+2026-03-06 08:00:54,516 INFO sitegen.build: Wrote feed.xml
+2026-03-06 08:00:54,520 INFO sitegen.build: Copied static assets (css/, js/)
+2026-03-06 08:00:54,520 INFO sitegen.build: Site build complete: /Users/georgeauto/orithena/orithena-pulse/output/site
+2026-03-06 08:00:54,521 INFO pulse: Site built successfully: /Users/georgeauto/orithena/orithena-pulse/output/site
+2026-03-06 08:00:54,521 INFO pulse: === Stage 5: Intelligence ===
+2026-03-06 08:00:54,526 INFO intelligence.report: Saved report: /Users/georgeauto/orithena/orithena-pulse/data/reports/2026-03-06/rss__d07097099c58a24c.md
+2026-03-06 08:00:54,528 INFO intelligence.report: Saved report: /Users/georgeauto/orithena/orithena-pulse/data/reports/2026-03-06/github_trending__doobidoo_mcp-memory-service.md
+2026-03-06 08:00:54,536 INFO intelligence.report: Saved report: /Users/georgeauto/orithena/orithena-pulse/data/reports/2026-03-06/rss__4883a97a5b2b1b4d.md
+2026-03-06 08:00:54,537 INFO intelligence.report: Saved report: /Users/georgeauto/orithena/orithena-pulse/data/reports/2026-03-06/arxiv__2603.05344v1.md
+2026-03-06 08:00:54,537 INFO intelligence.report: Saved report: /Users/georgeauto/orithena/orithena-pulse/data/reports/2026-03-06/github_trending__ruvnet_ruflo.md
+2026-03-06 08:00:54,538 INFO intelligence.report: Saved report: /Users/georgeauto/orithena/orithena-pulse/data/reports/2026-03-06/github_trending__microsoft_mcp-for-beginners.md
+2026-03-06 08:00:54,539 INFO intelligence.report: Saved report: /Users/georgeauto/orithena/orithena-pulse/data/reports/2026-03-06/arxiv__2603.05218v1.md
+2026-03-06 08:00:54,540 INFO intelligence.report: Saved report: /Users/georgeauto/orithena/orithena-pulse/data/reports/2026-03-06/arxiv__2603.04751v1.md
+2026-03-06 08:00:54,550 INFO intelligence.report: Saved report: /Users/georgeauto/orithena/orithena-pulse/data/reports/2026-03-06/rss__4f651e73b0c0ff7f.md
+2026-03-06 08:00:54,550 INFO intelligence.report: Saved report: /Users/georgeauto/orithena/orithena-pulse/data/reports/2026-03-06/github_trending__lobehub_lobehub.md
+2026-03-06 08:00:54,550 INFO intelligence.report: Saved report: /Users/georgeauto/orithena/orithena-pulse/data/reports/2026-03-06/github_trending__mudler_LocalAI.md
+2026-03-06 08:00:54,551 INFO intelligence.report: Saved report: /Users/georgeauto/orithena/orithena-pulse/data/reports/2026-03-06/github_trending__danny-avila_LibreChat.md
+2026-03-06 08:00:54,551 INFO intelligence.report: Saved report: /Users/georgeauto/orithena/orithena-pulse/data/reports/2026-03-06/github_trending__liyupi_ai-guide.md
+2026-03-06 08:00:54,551 INFO intelligence.report: Saved report: /Users/georgeauto/orithena/orithena-pulse/data/reports/2026-03-06/github_trending__moyangzhan_langchain4j-aideepin.md
+2026-03-06 08:00:54,552 INFO intelligence.report: Saved report: /Users/georgeauto/orithena/orithena-pulse/data/reports/2026-03-06/github_trending__SolaceLabs_solace-agent-mesh.md
+2026-03-06 08:00:54,552 INFO intelligence.report: Saved report: /Users/georgeauto/orithena/orithena-pulse/data/reports/2026-03-06/github_trending__IBM_mcp-context-forge.md
+2026-03-06 08:00:54,553 INFO intelligence.report: Saved report: /Users/georgeauto/orithena/orithena-pulse/data/reports/2026-03-06/github_trending__mcp-use_mcp-use.md
+2026-03-06 08:00:54,553 INFO intelligence.report: Saved report: /Users/georgeauto/orithena/orithena-pulse/data/reports/2026-03-06/github_trending__labring_FastGPT.md
+2026-03-06 08:00:54,554 INFO intelligence.report: Saved report: /Users/georgeauto/orithena/orithena-pulse/data/reports/2026-03-06/arxiv__2603.04756v1.md
+2026-03-06 08:00:54,555 INFO intelligence.report: Saved report: /Users/georgeauto/orithena/orithena-pulse/data/reports/2026-03-06/github_trending__kill136_claude-code-open.md
+2026-03-06 08:00:54,555 INFO intelligence.report: Saved report: /Users/georgeauto/orithena/orithena-pulse/data/reports/2026-03-06/github_trending__microsoft_agent-framework.md
+2026-03-06 08:00:54,556 INFO intelligence.report: Saved report: /Users/georgeauto/orithena/orithena-pulse/data/reports/2026-03-06/github_trending__infiniflow_ragflow.md
+2026-03-06 08:00:54,556 INFO intelligence.report: Saved report: /Users/georgeauto/orithena/orithena-pulse/data/reports/2026-03-06/github_trending__googleapis_genai-toolbox.md
+2026-03-06 08:00:54,557 INFO intelligence.report: Saved report: /Users/georgeauto/orithena/orithena-pulse/data/reports/2026-03-06/github_trending__Klavis-AI_klavis.md
+2026-03-06 08:00:54,558 INFO intelligence.report: Saved report: /Users/georgeauto/orithena/orithena-pulse/data/reports/2026-03-06/github_trending__EverMind-AI_EverMemOS.md
+2026-03-06 08:00:54,558 INFO intelligence.report: Saved report: /Users/georgeauto/orithena/orithena-pulse/data/reports/2026-03-06/github_trending__massgen_MassGen.md
+2026-03-06 08:00:54,559 INFO intelligence.report: Saved report: /Users/georgeauto/orithena/orithena-pulse/data/reports/2026-03-06/github_trending__inkeep_agents.md
+2026-03-06 08:00:54,560 INFO intelligence.report: Saved report: /Users/georgeauto/orithena/orithena-pulse/data/reports/2026-03-06/github_trending__jeinlee1991_chinese-llm-benchmark.md
+2026-03-06 08:00:54,560 INFO intelligence.report: Saved report: /Users/georgeauto/orithena/orithena-pulse/data/reports/2026-03-06/github_trending__bytedance_deer-flow.md
+2026-03-06 08:00:54,561 INFO intelligence.report: Saved report: /Users/georgeauto/orithena/orithena-pulse/data/reports/2026-03-06/github_trending__SmythOS_sre.md
+2026-03-06 08:00:54,561 INFO intelligence.report: Saved report: /Users/georgeauto/orithena/orithena-pulse/data/reports/2026-03-06/github_trending__CoplayDev_unity-mcp.md
+2026-03-06 08:00:54,562 INFO intelligence.report: Saved report: /Users/georgeauto/orithena/orithena-pulse/data/reports/2026-03-06/arxiv__2603.05129v1.md
+2026-03-06 08:00:54,563 INFO intelligence.report: Saved report: /Users/georgeauto/orithena/orithena-pulse/data/reports/2026-03-06/arxiv__2603.04750v1.md
+2026-03-06 08:00:54,564 INFO intelligence.report: Saved report: /Users/georgeauto/orithena/orithena-pulse/data/reports/2026-03-06/arxiv__2603.04549v1.md
+2026-03-06 08:00:54,565 INFO intelligence.report: Saved report: /Users/georgeauto/orithena/orithena-pulse/data/reports/2026-03-06/github_trending__cft0808_edict.md
+2026-03-06 08:00:54,565 INFO intelligence.report: Saved report: /Users/georgeauto/orithena/orithena-pulse/data/reports/2026-03-06/arxiv__2603.04815v1.md
+2026-03-06 08:00:54,566 INFO intelligence.report: Saved report: /Users/georgeauto/orithena/orithena-pulse/data/reports/2026-03-06/arxiv__2603.04663v1.md
+2026-03-06 08:00:54,567 INFO intelligence.report: Saved report: /Users/georgeauto/orithena/orithena-pulse/data/reports/2026-03-06/github_trending__zhayujie_chatgpt-on-wechat.md
+2026-03-06 08:00:54,567 INFO intelligence.report: Saved report: /Users/georgeauto/orithena/orithena-pulse/data/reports/2026-03-06/github_trending__CherryHQ_cherry-studio.md
+2026-03-06 08:00:54,568 INFO intelligence.report: Saved report: /Users/georgeauto/orithena/orithena-pulse/data/reports/2026-03-06/github_trending__activepieces_activepieces.md
+2026-03-06 08:00:54,569 INFO intelligence.report: Saved report: /Users/georgeauto/orithena/orithena-pulse/data/reports/2026-03-06/github_trending__e2b-dev_E2B.md
+2026-03-06 08:00:54,570 INFO intelligence.report: Saved report: /Users/georgeauto/orithena/orithena-pulse/data/reports/2026-03-06/github_trending__crestalnetwork_intentkit.md
+2026-03-06 08:00:54,572 INFO intelligence.report: Saved report: /Users/georgeauto/orithena/orithena-pulse/data/reports/2026-03-06/github_trending__FullAgent_fulling.md
+2026-03-06 08:00:54,573 INFO intelligence.report: Saved report: /Users/georgeauto/orithena/orithena-pulse/data/reports/2026-03-06/github_trending__asheshgoplani_agent-deck.md
+2026-03-06 08:00:54,578 INFO intelligence.report: Saved report: /Users/georgeauto/orithena/orithena-pulse/data/reports/2026-03-06/github_trending__nextlevelbuilder_goclaw.md
+2026-03-06 08:00:54,585 INFO intelligence.report: Saved report: /Users/georgeauto/orithena/orithena-pulse/data/reports/2026-03-06/github_trending__inclusionAI_AReaL.md
+2026-03-06 08:00:54,586 INFO intelligence.report: Saved report: /Users/georgeauto/orithena/orithena-pulse/data/reports/2026-03-06/github_trending__gptme_gptme.md
+2026-03-06 08:00:54,587 INFO intelligence.report: Saved report: /Users/georgeauto/orithena/orithena-pulse/data/reports/2026-03-06/github_trending__ComposioHQ_agent-orchestrator.md
+2026-03-06 08:00:54,589 INFO intelligence.report: Saved report: /Users/georgeauto/orithena/orithena-pulse/data/reports/2026-03-06/github_trending__google_adk-java.md
+2026-03-06 08:00:54,590 INFO intelligence.report: Saved report: /Users/georgeauto/orithena/orithena-pulse/data/reports/2026-03-06/github_trending__inclusionAI_AWorld.md
+2026-03-06 08:00:54,592 INFO intelligence.report: Saved report: /Users/georgeauto/orithena/orithena-pulse/data/reports/2026-03-06/github_trending__mindsdb_mindsdb.md
+2026-03-06 08:00:54,594 INFO intelligence.report: Saved report: /Users/georgeauto/orithena/orithena-pulse/data/reports/2026-03-06/github_trending__block_goose.md
+2026-03-06 08:00:54,603 INFO intelligence.report: Saved report: /Users/georgeauto/orithena/orithena-pulse/data/reports/2026-03-06/github_trending__sickn33_antigravity-awesome-skills.md
+2026-03-06 08:00:54,655 INFO intelligence.report: Saved report: /Users/georgeauto/orithena/orithena-pulse/data/reports/2026-03-06/github_trending__google_adk-go.md
+2026-03-06 08:00:54,656 INFO intelligence.report: Saved report: /Users/georgeauto/orithena/orithena-pulse/data/reports/2026-03-06/github_trending__superset-sh_superset.md
+2026-03-06 08:00:54,657 INFO intelligence.report: Saved report: /Users/georgeauto/orithena/orithena-pulse/data/reports/2026-03-06/github_trending__Kiln-AI_Kiln.md
+2026-03-06 08:00:54,658 INFO intelligence.report: Saved report: /Users/georgeauto/orithena/orithena-pulse/data/reports/2026-03-06/github_trending__SamurAIGPT_Generative-Media-Skills.md
+2026-03-06 08:00:54,659 INFO intelligence.report: Saved report: /Users/georgeauto/orithena/orithena-pulse/data/reports/2026-03-06/github_trending__MervinPraison_PraisonAI.md
+2026-03-06 08:00:54,660 INFO intelligence.report: Saved report: /Users/georgeauto/orithena/orithena-pulse/data/reports/2026-03-06/arxiv__2603.05295v1.md
+2026-03-06 08:00:54,661 INFO intelligence.report: Saved report: /Users/georgeauto/orithena/orithena-pulse/data/reports/2026-03-06/arxiv__2603.05294v1.md
+2026-03-06 08:00:54,662 INFO intelligence.report: Saved report: /Users/georgeauto/orithena/orithena-pulse/data/reports/2026-03-06/arxiv__2603.05120v1.md
+2026-03-06 08:00:54,662 INFO intelligence.report: Saved report: /Users/georgeauto/orithena/orithena-pulse/data/reports/2026-03-06/arxiv__2603.05000v1.md
+2026-03-06 08:00:54,663 INFO intelligence.report: Saved report: /Users/georgeauto/orithena/orithena-pulse/data/reports/2026-03-06/arxiv__2603.04873v1.md
+2026-03-06 08:00:54,664 INFO intelligence.report: Saved report: /Users/georgeauto/orithena/orithena-pulse/data/reports/2026-03-06/arxiv__2603.04868v1.md
+2026-03-06 08:00:54,664 INFO intelligence.report: Saved report: /Users/georgeauto/orithena/orithena-pulse/data/reports/2026-03-06/arxiv__2603.04659v1.md
+2026-03-06 08:00:54,665 INFO intelligence.report: Saved report: /Users/georgeauto/orithena/orithena-pulse/data/reports/2026-03-06/github_trending__rapidaai_voice-ai.md
+2026-03-06 08:00:54,666 INFO intelligence.report: Saved report: /Users/georgeauto/orithena/orithena-pulse/data/reports/2026-03-06/github_trending__affaan-m_everything-claude-code.md
+2026-03-06 08:00:54,666 INFO intelligence.report: Saved report: /Users/georgeauto/orithena/orithena-pulse/data/reports/2026-03-06/github_trending__mksglu_context-mode.md
+2026-03-06 08:00:54,667 INFO intelligence.report: Saved report: /Users/georgeauto/orithena/orithena-pulse/data/reports/2026-03-06/github_trending__marcuspat_turbo-flow.md
+2026-03-06 08:00:54,668 INFO intelligence.report: Saved report: /Users/georgeauto/orithena/orithena-pulse/data/reports/2026-03-06/github_trending__alibaba_OpenSandbox.md
+2026-03-06 08:00:54,669 INFO intelligence.report: Saved report: /Users/georgeauto/orithena/orithena-pulse/data/reports/2026-03-06/github_trending__UnicomAI_wanwu.md
+2026-03-06 08:00:54,669 INFO intelligence.report: Saved report: /Users/georgeauto/orithena/orithena-pulse/data/reports/2026-03-06/github_trending__ChromeDevTools_chrome-devtools-mcp.md
+2026-03-06 08:00:54,670 INFO intelligence.report: Saved report: /Users/georgeauto/orithena/orithena-pulse/data/reports/2026-03-06/github_trending__JetBrains_koog.md
+2026-03-06 08:00:54,670 INFO intelligence.report: Saved report: /Users/georgeauto/orithena/orithena-pulse/data/reports/2026-03-06/arxiv__2603.05399v1.md
+2026-03-06 08:00:54,671 INFO intelligence.report: Saved report: /Users/georgeauto/orithena/orithena-pulse/data/reports/2026-03-06/arxiv__2603.05188v1.md
+2026-03-06 08:00:54,672 INFO intelligence.report: Saved report: /Users/georgeauto/orithena/orithena-pulse/data/reports/2026-03-06/arxiv__2603.04885v1.md
+2026-03-06 08:00:54,673 INFO intelligence.report: Saved report: /Users/georgeauto/orithena/orithena-pulse/data/reports/2026-03-06/arxiv__2603.04837v1.md
+2026-03-06 08:00:54,673 INFO intelligence.report: Saved report: /Users/georgeauto/orithena/orithena-pulse/data/reports/2026-03-06/arxiv__2603.04833v1.md
+2026-03-06 08:00:54,674 INFO intelligence.report: Saved report: /Users/georgeauto/orithena/orithena-pulse/data/reports/2026-03-06/arxiv__2603.04740v1.md
+2026-03-06 08:00:54,675 INFO intelligence.report: Saved report: /Users/georgeauto/orithena/orithena-pulse/data/reports/2026-03-06/arxiv__2603.04601v1.md
+2026-03-06 08:00:54,675 INFO intelligence.report: Saved report: /Users/georgeauto/orithena/orithena-pulse/data/reports/2026-03-06/github_trending__martymcenroe_AssemblyZero.md
+2026-03-06 08:00:54,677 INFO intelligence.report: Saved report: /Users/georgeauto/orithena/orithena-pulse/data/reports/2026-03-06/rss__5a1523aa0b460ed7.md
+2026-03-06 08:00:54,678 INFO intelligence.report: Saved report: /Users/georgeauto/orithena/orithena-pulse/data/reports/2026-03-06/github_trending__iOfficeAI_AionUi.md
+2026-03-06 08:00:54,678 INFO intelligence.report: Saved report: /Users/georgeauto/orithena/orithena-pulse/data/reports/2026-03-06/github_trending__trycua_cua.md
+2026-03-06 08:00:54,679 INFO intelligence.report: Saved report: /Users/georgeauto/orithena/orithena-pulse/data/reports/2026-03-06/github_trending__moltis-org_moltis.md
+2026-03-06 08:00:54,679 INFO intelligence.report: Saved report: /Users/georgeauto/orithena/orithena-pulse/data/reports/2026-03-06/github_trending__google_adk-python.md
+2026-03-06 08:00:54,680 INFO intelligence.report: Saved report: /Users/georgeauto/orithena/orithena-pulse/data/reports/2026-03-06/github_trending__ag2ai_ag2.md
+2026-03-06 08:00:54,680 INFO intelligence.report: Saved report: /Users/georgeauto/orithena/orithena-pulse/data/reports/2026-03-06/github_trending__VoltAgent_voltagent.md
+2026-03-06 08:00:54,681 INFO intelligence.report: Saved report: /Users/georgeauto/orithena/orithena-pulse/data/reports/2026-03-06/github_trending__getsentry_XcodeBuildMCP.md
+2026-03-06 08:00:54,681 INFO intelligence.report: Saved report: /Users/georgeauto/orithena/orithena-pulse/data/reports/2026-03-06/github_trending__asklokesh_loki-mode.md
+2026-03-06 08:00:54,682 INFO intelligence.report: Saved report: /Users/georgeauto/orithena/orithena-pulse/data/reports/2026-03-06/arxiv__2603.05471v1.md
+2026-03-06 08:00:54,683 INFO intelligence.report: Saved report: /Users/georgeauto/orithena/orithena-pulse/data/reports/2026-03-06/arxiv__2603.05027v1.md
+2026-03-06 08:00:54,684 INFO intelligence.report: Saved report: /Users/georgeauto/orithena/orithena-pulse/data/reports/2026-03-06/arxiv__2603.04902v1.md
+2026-03-06 08:00:54,685 INFO intelligence.report: Saved report: /Users/georgeauto/orithena/orithena-pulse/data/reports/2026-03-06/github_trending__jd-opensource_JoySafeter.md
+2026-03-06 08:00:54,686 INFO intelligence.report: Saved report: /Users/georgeauto/orithena/orithena-pulse/data/reports/2026-03-06/rss__472ae1a23d2fff12.md
+2026-03-06 08:00:54,689 INFO intelligence.report: Saved report: /Users/georgeauto/orithena/orithena-pulse/data/reports/2026-03-06/rss__06a53470bce02e4a.md
+2026-03-06 08:00:54,689 INFO intelligence.report: Saved report: /Users/georgeauto/orithena/orithena-pulse/data/reports/2026-03-06/github_trending__helixml_helix.md
+2026-03-06 08:00:54,690 INFO intelligence.report: Saved report: /Users/georgeauto/orithena/orithena-pulse/data/reports/2026-03-06/github_trending__kivo360_OmoiOS.md
+2026-03-06 08:00:54,690 INFO intelligence.report: Saved report: /Users/georgeauto/orithena/orithena-pulse/data/reports/2026-03-06/github_trending__gmickel_gmickel-claude-marketplace.md
+2026-03-06 08:00:54,691 INFO intelligence.report: Saved report: /Users/georgeauto/orithena/orithena-pulse/data/reports/2026-03-06/github_trending__CopilotKit_CopilotKit.md
+2026-03-06 08:00:54,692 INFO intelligence.report: Saved report: /Users/georgeauto/orithena/orithena-pulse/data/reports/2026-03-06/github_trending__smallcloudai_refact.md
+2026-03-06 08:00:54,693 INFO intelligence.report: Saved report: /Users/georgeauto/orithena/orithena-pulse/data/reports/2026-03-06/github_trending__1186258278_OpenClawChineseTranslation.md
+2026-03-06 08:00:54,693 INFO intelligence.report: Saved report: /Users/georgeauto/orithena/orithena-pulse/data/reports/2026-03-06/github_trending__can1357_oh-my-pi.md
+2026-03-06 08:00:54,694 INFO intelligence.report: Saved report: /Users/georgeauto/orithena/orithena-pulse/data/reports/2026-03-06/github_trending__GetBindu_Bindu.md
+2026-03-06 08:00:54,694 INFO intelligence.report: Saved report: /Users/georgeauto/orithena/orithena-pulse/data/reports/2026-03-06/github_trending__YouMind-OpenLab_nano-banana-pro-prompts-recommend-skill.md
+2026-03-06 08:00:54,695 INFO intelligence.report: Saved report: /Users/georgeauto/orithena/orithena-pulse/data/reports/2026-03-06/github_trending__iflytek_astron-agent.md
+2026-03-06 08:00:54,696 INFO intelligence.report: Saved report: /Users/georgeauto/orithena/orithena-pulse/data/reports/2026-03-06/github_trending__ringhyacinth_Star-Office-UI.md
+2026-03-06 08:00:54,696 INFO intelligence.report: Saved report: /Users/georgeauto/orithena/orithena-pulse/data/reports/2026-03-06/github_trending__langgenius_dify.md
+2026-03-06 08:00:54,697 INFO intelligence.report: Saved report: /Users/georgeauto/orithena/orithena-pulse/data/reports/2026-03-06/github_trending__upstash_context7.md
+2026-03-06 08:00:54,697 INFO intelligence.report: Saved report: /Users/georgeauto/orithena/orithena-pulse/data/reports/2026-03-06/github_trending__ComposioHQ_composio.md
+2026-03-06 08:00:54,698 INFO intelligence.report: Saved report: /Users/georgeauto/orithena/orithena-pulse/data/reports/2026-03-06/github_trending__flipped-aurora_gin-vue-admin.md
+2026-03-06 08:00:54,699 INFO intelligence.report: Saved report: /Users/georgeauto/orithena/orithena-pulse/data/reports/2026-03-06/github_trending__mastra-ai_mastra.md
+2026-03-06 08:00:54,699 INFO intelligence.report: Saved report: /Users/georgeauto/orithena/orithena-pulse/data/reports/2026-03-06/github_trending__triggerdotdev_trigger.dev.md
+2026-03-06 08:00:54,699 INFO intelligence.report: Saved report: /Users/georgeauto/orithena/orithena-pulse/data/reports/2026-03-06/github_trending__iflytek_astron-rpa.md
+2026-03-06 08:00:54,700 INFO intelligence.report: Saved report: /Users/georgeauto/orithena/orithena-pulse/data/reports/2026-03-06/github_trending__beclab_Olares.md
+2026-03-06 08:00:54,700 INFO intelligence.report: Saved report: /Users/georgeauto/orithena/orithena-pulse/data/reports/2026-03-06/github_trending__archestra-ai_archestra.md
+2026-03-06 08:00:54,701 INFO intelligence.report: Saved report: /Users/georgeauto/orithena/orithena-pulse/data/reports/2026-03-06/github_trending__icip-cas_PPTAgent.md
+2026-03-06 08:00:54,702 INFO intelligence.report: Saved report: /Users/georgeauto/orithena/orithena-pulse/data/reports/2026-03-06/github_trending__metorial_metorial.md
+2026-03-06 08:00:54,703 INFO intelligence.report: Saved report: /Users/georgeauto/orithena/orithena-pulse/data/reports/2026-03-06/github_trending__intertwine_hive-orchestrator.md
+2026-03-06 08:00:54,703 INFO intelligence.report: Saved report: /Users/georgeauto/orithena/orithena-pulse/data/reports/2026-03-06/github_trending__memodb-io_Acontext.md
+2026-03-06 08:00:54,704 INFO intelligence.report: Saved report: /Users/georgeauto/orithena/orithena-pulse/data/reports/2026-03-06/github_trending__google_adk-js.md
+2026-03-06 08:00:54,704 INFO intelligence.report: Saved report: /Users/georgeauto/orithena/orithena-pulse/data/reports/2026-03-06/github_trending__zerocore-ai_microsandbox.md
+2026-03-06 08:00:54,705 INFO intelligence.report: Saved report: /Users/georgeauto/orithena/orithena-pulse/data/reports/2026-03-06/arxiv__2603.05234v1.md
+2026-03-06 08:00:54,705 INFO intelligence.report: Saved report: /Users/georgeauto/orithena/orithena-pulse/data/reports/2026-03-06/arxiv__2603.05113v1.md
+2026-03-06 08:00:54,706 INFO intelligence.report: Saved report: /Users/georgeauto/orithena/orithena-pulse/data/reports/2026-03-06/arxiv__2603.05099v1.md
+2026-03-06 08:00:54,707 INFO intelligence.report: Saved report: /Users/georgeauto/orithena/orithena-pulse/data/reports/2026-03-06/arxiv__2603.05016v1.md
+2026-03-06 08:00:54,707 INFO intelligence.report: Saved report: /Users/georgeauto/orithena/orithena-pulse/data/reports/2026-03-06/arxiv__2603.04904v1.md
+2026-03-06 08:00:54,708 INFO intelligence.report: Saved report: /Users/georgeauto/orithena/orithena-pulse/data/reports/2026-03-06/arxiv__2603.04900v1.md
+2026-03-06 08:00:54,709 INFO intelligence.report: Saved report: /Users/georgeauto/orithena/orithena-pulse/data/reports/2026-03-06/arxiv__2603.04861v1.md
+2026-03-06 08:00:54,709 INFO intelligence.report: Saved report: /Users/georgeauto/orithena/orithena-pulse/data/reports/2026-03-06/arxiv__2603.04743v1.md
+2026-03-06 08:00:54,710 INFO intelligence.report: Saved report: /Users/georgeauto/orithena/orithena-pulse/data/reports/2026-03-06/arxiv__2603.04735v1.md
+2026-03-06 08:00:54,711 INFO intelligence.report: Saved report: /Users/georgeauto/orithena/orithena-pulse/data/reports/2026-03-06/arxiv__2603.04722v1.md
+2026-03-06 08:00:54,711 INFO intelligence.report: Saved report: /Users/georgeauto/orithena/orithena-pulse/data/reports/2026-03-06/arxiv__2603.04656v1.md
+2026-03-06 08:00:54,713 INFO intelligence.report: Saved report: /Users/georgeauto/orithena/orithena-pulse/data/reports/2026-03-06/arxiv__2603.04628v1.md
+2026-03-06 08:00:54,713 INFO intelligence.report: Saved report: /Users/georgeauto/orithena/orithena-pulse/data/reports/2026-03-06/github_trending__SixHq_Overture.md
+2026-03-06 08:00:54,714 INFO intelligence.report: Saved report: /Users/georgeauto/orithena/orithena-pulse/data/reports/2026-03-06/rss__7fd2353166aab69e.md
+2026-03-06 08:00:54,715 INFO intelligence.report: Saved report: /Users/georgeauto/orithena/orithena-pulse/data/reports/2026-03-06/github_trending__LazyAGI_LazyLLM.md
+2026-03-06 08:00:54,715 INFO intelligence.report: Saved report: /Users/georgeauto/orithena/orithena-pulse/data/reports/2026-03-06/github_trending__zebbern_claude-code-guide.md
+2026-03-06 08:00:54,716 INFO intelligence.report: Saved report: /Users/georgeauto/orithena/orithena-pulse/data/reports/2026-03-06/github_trending__covibes_zeroshot.md
+2026-03-06 08:00:54,716 INFO intelligence.report: Saved report: /Users/georgeauto/orithena/orithena-pulse/data/reports/2026-03-06/github_trending__stakpak_agent.md
+2026-03-06 08:00:54,717 INFO intelligence.report: Saved report: /Users/georgeauto/orithena/orithena-pulse/data/reports/2026-03-06/github_trending__agentuniverse-ai_agentUniverse.md
+2026-03-06 08:00:54,718 INFO intelligence.report: Saved report: /Users/georgeauto/orithena/orithena-pulse/data/reports/2026-03-06/github_trending__MiroMindAI_MiroThinker.md
+2026-03-06 08:00:54,718 INFO intelligence.report: Saved report: /Users/georgeauto/orithena/orithena-pulse/data/reports/2026-03-06/github_trending__czlonkowski_n8n-mcp.md
+2026-03-06 08:00:54,719 INFO intelligence.report: Saved report: /Users/georgeauto/orithena/orithena-pulse/data/reports/2026-03-06/github_trending__GLips_Figma-Context-MCP.md
+2026-03-06 08:00:54,719 INFO intelligence.report: Saved report: /Users/georgeauto/orithena/orithena-pulse/data/reports/2026-03-06/github_trending__remorses_playwriter.md
+2026-03-06 08:00:54,720 INFO intelligence.report: Saved report: /Users/georgeauto/orithena/orithena-pulse/data/reports/2026-03-06/github_trending__OpenCoworkAI_open-cowork.md
+2026-03-06 08:00:54,721 INFO intelligence.report: Saved report: /Users/georgeauto/orithena/orithena-pulse/data/reports/2026-03-06/github_trending__open-metadata_OpenMetadata.md
+2026-03-06 08:00:54,721 INFO intelligence.report: Saved report: /Users/georgeauto/orithena/orithena-pulse/data/reports/2026-03-06/github_trending__intuitem_ciso-assistant-community.md
+2026-03-06 08:00:54,722 INFO intelligence.report: Saved report: /Users/georgeauto/orithena/orithena-pulse/data/reports/2026-03-06/github_trending__datawhalechina_easy-vibe.md
+2026-03-06 08:00:54,722 INFO intelligence.report: Saved report: /Users/georgeauto/orithena/orithena-pulse/data/reports/2026-03-06/arxiv__2603.05438v1.md
+2026-03-06 08:00:54,723 INFO intelligence.report: Saved report: /Users/georgeauto/orithena/orithena-pulse/data/reports/2026-03-06/arxiv__2603.05290v1.md
+2026-03-06 08:00:54,724 INFO intelligence.report: Saved report: /Users/georgeauto/orithena/orithena-pulse/data/reports/2026-03-06/arxiv__2603.05167v1.md
+2026-03-06 08:00:54,724 INFO intelligence.report: Saved report: /Users/georgeauto/orithena/orithena-pulse/data/reports/2026-03-06/arxiv__2603.05069v1.md
+2026-03-06 08:00:54,725 INFO intelligence.report: Saved report: /Users/georgeauto/orithena/orithena-pulse/data/reports/2026-03-06/arxiv__2603.05044v1.md
+2026-03-06 08:00:54,725 INFO intelligence.report: Saved report: /Users/georgeauto/orithena/orithena-pulse/data/reports/2026-03-06/arxiv__2603.05040v1.md
+2026-03-06 08:00:54,726 INFO intelligence.report: Saved report: /Users/georgeauto/orithena/orithena-pulse/data/reports/2026-03-06/arxiv__2603.04976v1.md
+2026-03-06 08:00:54,727 INFO intelligence.report: Saved report: /Users/georgeauto/orithena/orithena-pulse/data/reports/2026-03-06/arxiv__2603.04951v1.md
+2026-03-06 08:00:54,728 INFO intelligence.report: Saved report: /Users/georgeauto/orithena/orithena-pulse/data/reports/2026-03-06/arxiv__2603.04948v1.md
+2026-03-06 08:00:54,728 INFO intelligence.report: Saved report: /Users/georgeauto/orithena/orithena-pulse/data/reports/2026-03-06/arxiv__2603.04772v1.md
+2026-03-06 08:00:54,729 INFO intelligence.report: Saved report: /Users/georgeauto/orithena/orithena-pulse/data/reports/2026-03-06/arxiv__2603.04763v1.md
+2026-03-06 08:00:54,730 INFO intelligence.report: Saved report: /Users/georgeauto/orithena/orithena-pulse/data/reports/2026-03-06/arxiv__2603.04737v1.md
+2026-03-06 08:00:54,730 INFO intelligence.report: Saved report: /Users/georgeauto/orithena/orithena-pulse/data/reports/2026-03-06/arxiv__2603.04639v1.md
+2026-03-06 08:00:54,731 INFO intelligence.report: Saved report: /Users/georgeauto/orithena/orithena-pulse/data/reports/2026-03-06/arxiv__2603.04582v1.md
+2026-03-06 08:00:54,733 INFO intelligence.report: Saved report: /Users/georgeauto/orithena/orithena-pulse/data/reports/2026-03-06/rss__49f21d9635509e70.md
+2026-03-06 08:00:54,733 INFO intelligence.report: Saved report: /Users/georgeauto/orithena/orithena-pulse/data/reports/2026-03-06/github_trending__xuiltul_animaworks.md
+2026-03-06 08:00:54,734 INFO intelligence.report: Saved report: /Users/georgeauto/orithena/orithena-pulse/data/reports/2026-03-06/github_trending__heguangyong_scene-capability-engine.md
+2026-03-06 08:00:54,735 INFO intelligence.report: Saved report: /Users/georgeauto/orithena/orithena-pulse/data/reports/2026-03-06/github_trending__AlexAnys_awesome-openclaw-usecases-zh.md
+2026-03-06 08:00:54,736 INFO intelligence.report: Saved report: /Users/georgeauto/orithena/orithena-pulse/data/reports/2026-03-06/github_trending__googleworkspace_cli.md
+2026-03-06 08:00:54,737 INFO intelligence.report: Saved report: /Users/georgeauto/orithena/orithena-pulse/data/reports/2026-03-06/github_trending__aden-hive_hive.md
+2026-03-06 08:00:54,737 INFO intelligence.report: Saved report: /Users/georgeauto/orithena/orithena-pulse/data/reports/2026-03-06/github_trending__AstrBotDevs_AstrBot.md
+2026-03-06 08:00:54,738 INFO intelligence.report: Saved report: /Users/georgeauto/orithena/orithena-pulse/data/reports/2026-03-06/github_trending__anthropics_claude-plugins-official.md
+2026-03-06 08:00:54,738 INFO intelligence.report: Saved report: /Users/georgeauto/orithena/orithena-pulse/data/reports/2026-03-06/github_trending__DearVa_Everywhere.md
+2026-03-06 08:00:54,738 INFO intelligence.report: Saved report: /Users/georgeauto/orithena/orithena-pulse/data/reports/2026-03-06/github_trending__OpenBMB_UltraRAG.md
+2026-03-06 08:00:54,739 INFO intelligence.report: Saved report: /Users/georgeauto/orithena/orithena-pulse/data/reports/2026-03-06/github_trending__strands-agents_sdk-python.md
+2026-03-06 08:00:54,739 INFO intelligence.report: Saved report: /Users/georgeauto/orithena/orithena-pulse/data/reports/2026-03-06/github_trending__ageerle_ruoyi-ai.md
+2026-03-06 08:00:54,740 INFO intelligence.report: Saved report: /Users/georgeauto/orithena/orithena-pulse/data/reports/2026-03-06/github_trending__osaurus-ai_osaurus.md
+2026-03-06 08:00:54,740 INFO intelligence.report: Saved report: /Users/georgeauto/orithena/orithena-pulse/data/reports/2026-03-06/github_trending__Atmosphere_atmosphere.md
+2026-03-06 08:00:54,741 INFO intelligence.report: Saved report: /Users/georgeauto/orithena/orithena-pulse/data/reports/2026-03-06/github_trending__steipete_mcporter.md
+2026-03-06 08:00:54,742 INFO intelligence.report: Saved report: /Users/georgeauto/orithena/orithena-pulse/data/reports/2026-03-06/github_trending__duriantaco_skylos.md
+2026-03-06 08:00:54,742 INFO intelligence.report: Saved report: /Users/georgeauto/orithena/orithena-pulse/data/reports/2026-03-06/github_trending__agynio_platform.md
+2026-03-06 08:00:54,743 INFO intelligence.report: Saved report: /Users/georgeauto/orithena/orithena-pulse/data/reports/2026-03-06/github_trending__vstorm-co_pydantic-deepagents.md
+2026-03-06 08:00:54,743 INFO intelligence.report: Saved report: /Users/georgeauto/orithena/orithena-pulse/data/reports/2026-03-06/github_trending__AgentEra_Agently.md
+2026-03-06 08:00:54,744 INFO intelligence.report: Saved report: /Users/georgeauto/orithena/orithena-pulse/data/reports/2026-03-06/github_trending__jeecgboot_JeecgBoot.md
+2026-03-06 08:00:54,745 INFO intelligence.report: Saved report: /Users/georgeauto/orithena/orithena-pulse/data/reports/2026-03-06/github_trending__yamadashy_repomix.md
+2026-03-06 08:00:54,745 INFO intelligence.report: Saved report: /Users/georgeauto/orithena/orithena-pulse/data/reports/2026-03-06/arxiv__2603.04898v1.md
+2026-03-06 08:00:54,746 INFO intelligence.report: Saved report: /Users/georgeauto/orithena/orithena-pulse/data/reports/2026-03-06/github_trending__Alex8791-cyber_cognithor.md
+2026-03-06 08:00:54,747 INFO intelligence.report: Saved report: /Users/georgeauto/orithena/orithena-pulse/data/reports/2026-03-06/github_trending__roberto-mello_beads-compound-plugin.md
+2026-03-06 08:00:54,747 INFO intelligence.report: Saved report: /Users/georgeauto/orithena/orithena-pulse/data/reports/2026-03-06/github_trending__xvirobotics_metabot.md
+2026-03-06 08:00:54,748 INFO intelligence.report: Saved report: /Users/georgeauto/orithena/orithena-pulse/data/reports/2026-03-06/github_trending__AndrewAltimit_template-repo.md
+2026-03-06 08:00:54,748 INFO intelligence.report: Saved report: /Users/georgeauto/orithena/orithena-pulse/data/reports/2026-03-06/github_trending__The-Swarm-Corporation_ClawSwarm.md
+2026-03-06 08:00:54,749 INFO intelligence.report: Saved report: /Users/georgeauto/orithena/orithena-pulse/data/reports/2026-03-06/github_trending__aiflowy_aiflowy.md
+2026-03-06 08:00:54,750 INFO intelligence.report: Saved report: /Users/georgeauto/orithena/orithena-pulse/data/reports/2026-03-06/github_trending__vm0-ai_vm0.md
+2026-03-06 08:00:54,750 INFO intelligence.report: Saved report: /Users/georgeauto/orithena/orithena-pulse/data/reports/2026-03-06/github_trending__openops-cloud_openops.md
+2026-03-06 08:00:54,751 INFO intelligence.report: Saved report: /Users/georgeauto/orithena/orithena-pulse/data/reports/2026-03-06/github_trending__nrslib_takt.md
+2026-03-06 08:00:54,751 INFO intelligence.report: Saved report: /Users/georgeauto/orithena/orithena-pulse/data/reports/2026-03-06/github_trending__n8n-io_n8n.md
+2026-03-06 08:00:54,752 INFO intelligence.report: Saved report: /Users/georgeauto/orithena/orithena-pulse/data/reports/2026-03-06/github_trending__open-webui_open-webui.md
+2026-03-06 08:00:54,752 INFO intelligence.report: Saved report: /Users/georgeauto/orithena/orithena-pulse/data/reports/2026-03-06/github_trending__netdata_netdata.md
+2026-03-06 08:00:54,753 INFO intelligence.report: Saved report: /Users/georgeauto/orithena/orithena-pulse/data/reports/2026-03-06/github_trending__electerm_electerm.md
+2026-03-06 08:00:54,753 INFO intelligence.report: Saved report: /Users/georgeauto/orithena/orithena-pulse/data/reports/2026-03-06/github_trending__codexu_note-gen.md
+2026-03-06 08:00:54,754 INFO intelligence.report: Saved report: /Users/georgeauto/orithena/orithena-pulse/data/reports/2026-03-06/github_trending__Portkey-AI_gateway.md
+2026-03-06 08:00:54,754 INFO intelligence.report: Saved report: /Users/georgeauto/orithena/orithena-pulse/data/reports/2026-03-06/github_trending__ThinkInAIXYZ_deepchat.md
+2026-03-06 08:00:54,755 INFO intelligence.report: Saved report: /Users/georgeauto/orithena/orithena-pulse/data/reports/2026-03-06/github_trending__rikkahub_rikkahub.md
+2026-03-06 08:00:54,755 INFO intelligence.report: Saved report: /Users/georgeauto/orithena/orithena-pulse/data/reports/2026-03-06/github_trending__vllm-project_semantic-router.md
+2026-03-06 08:00:54,756 INFO intelligence.report: Saved report: /Users/georgeauto/orithena/orithena-pulse/data/reports/2026-03-06/github_trending__aspasskiy_GoGogot.md
+2026-03-06 08:00:54,756 INFO intelligence.report: Saved report: /Users/georgeauto/orithena/orithena-pulse/data/reports/2026-03-06/github_trending__macaron-software_software-factory.md
+2026-03-06 08:00:54,757 INFO intelligence.report: Saved report: /Users/georgeauto/orithena/orithena-pulse/data/reports/2026-03-06/github_trending__HolmesGPT_holmesgpt.md
+2026-03-06 08:00:54,757 INFO intelligence.report: Saved report: /Users/georgeauto/orithena/orithena-pulse/data/reports/2026-03-06/github_trending__phil65_agentpool.md
+2026-03-06 08:00:54,758 INFO intelligence.report: Saved report: /Users/georgeauto/orithena/orithena-pulse/data/reports/2026-03-06/github_trending__alibaba_spring-ai-alibaba.md
+2026-03-06 08:00:54,759 INFO intelligence.report: Saved report: /Users/georgeauto/orithena/orithena-pulse/data/reports/2026-03-06/github_trending__pydantic_pydantic-ai.md
+2026-03-06 08:00:54,759 INFO intelligence.report: Saved report: /Users/georgeauto/orithena/orithena-pulse/data/reports/2026-03-06/github_trending__punkpeye_awesome-mcp-servers.md
+2026-03-06 08:00:54,760 INFO intelligence.report: Saved report: /Users/georgeauto/orithena/orithena-pulse/data/reports/2026-03-06/github_trending__github_github-mcp-server.md
+2026-03-06 08:00:54,760 INFO intelligence.report: Saved report: /Users/georgeauto/orithena/orithena-pulse/data/reports/2026-03-06/github_trending__78_xiaozhi-esp32.md
+2026-03-06 08:00:54,761 INFO intelligence.report: Saved report: /Users/georgeauto/orithena/orithena-pulse/data/reports/2026-03-06/github_trending__udecode_plate.md
+2026-03-06 08:00:54,761 INFO intelligence.report: Saved report: /Users/georgeauto/orithena/orithena-pulse/data/reports/2026-03-06/github_trending__awslabs_mcp.md
+2026-03-06 08:00:54,762 INFO intelligence.report: Saved report: /Users/georgeauto/orithena/orithena-pulse/data/reports/2026-03-06/github_trending__punkpeye_fastmcp.md
+2026-03-06 08:00:54,762 INFO intelligence.report: Saved report: /Users/georgeauto/orithena/orithena-pulse/data/reports/2026-03-06/arxiv__2603.05488v1.md
+2026-03-06 08:00:54,763 INFO intelligence.report: Saved report: /Users/georgeauto/orithena/orithena-pulse/data/reports/2026-03-06/arxiv__2603.05485v1.md
+2026-03-06 08:00:54,764 INFO intelligence.report: Saved report: /Users/georgeauto/orithena/orithena-pulse/data/reports/2026-03-06/arxiv__2603.05450v1.md
+2026-03-06 08:00:54,765 INFO intelligence.report: Saved report: /Users/georgeauto/orithena/orithena-pulse/data/reports/2026-03-06/arxiv__2603.05440v1.md
+2026-03-06 08:00:54,765 INFO intelligence.report: Saved report: /Users/georgeauto/orithena/orithena-pulse/data/reports/2026-03-06/arxiv__2603.05433v1.md
+2026-03-06 08:00:54,766 INFO intelligence.report: Saved report: /Users/georgeauto/orithena/orithena-pulse/data/reports/2026-03-06/arxiv__2603.05423v1.md
+2026-03-06 08:00:54,767 INFO intelligence.report: Saved report: /Users/georgeauto/orithena/orithena-pulse/data/reports/2026-03-06/arxiv__2603.05418v1.md
+2026-03-06 08:00:54,767 INFO intelligence.report: Saved report: /Users/georgeauto/orithena/orithena-pulse/data/reports/2026-03-06/arxiv__2603.05337v1.md
+2026-03-06 08:00:54,768 INFO intelligence.report: Saved report: /Users/georgeauto/orithena/orithena-pulse/data/reports/2026-03-06/arxiv__2603.05293v1.md
+2026-03-06 08:00:54,769 INFO intelligence.report: Saved report: /Users/georgeauto/orithena/orithena-pulse/data/reports/2026-03-06/arxiv__2603.05240v1.md
+2026-03-06 08:00:54,769 INFO intelligence.report: Saved report: /Users/georgeauto/orithena/orithena-pulse/data/reports/2026-03-06/arxiv__2603.05232v1.md
+2026-03-06 08:00:54,770 INFO intelligence.report: Saved report: /Users/georgeauto/orithena/orithena-pulse/data/reports/2026-03-06/arxiv__2603.05225v1.md
+2026-03-06 08:00:54,771 INFO intelligence.report: Saved report: /Users/georgeauto/orithena/orithena-pulse/data/reports/2026-03-06/arxiv__2603.05171v1.md
+2026-03-06 08:00:54,771 INFO intelligence.report: Saved report: /Users/georgeauto/orithena/orithena-pulse/data/reports/2026-03-06/arxiv__2603.05160v1.md
+2026-03-06 08:00:54,772 INFO intelligence.report: Saved report: /Users/georgeauto/orithena/orithena-pulse/data/reports/2026-03-06/arxiv__2603.05143v1.md
+2026-03-06 08:00:54,773 INFO intelligence.report: Saved report: /Users/georgeauto/orithena/orithena-pulse/data/reports/2026-03-06/arxiv__2603.05134v1.md
+2026-03-06 08:00:54,773 INFO intelligence.report: Saved report: /Users/georgeauto/orithena/orithena-pulse/data/reports/2026-03-06/arxiv__2603.05111v1.md
+2026-03-06 08:00:54,774 INFO intelligence.report: Saved report: /Users/georgeauto/orithena/orithena-pulse/data/reports/2026-03-06/arxiv__2603.05066v1.md
+2026-03-06 08:00:54,775 INFO intelligence.report: Saved report: /Users/georgeauto/orithena/orithena-pulse/data/reports/2026-03-06/arxiv__2603.05031v1.md
+2026-03-06 08:00:54,775 INFO intelligence.report: Saved report: /Users/georgeauto/orithena/orithena-pulse/data/reports/2026-03-06/arxiv__2603.05028v1.md
+2026-03-06 08:00:54,776 INFO intelligence.report: Saved report: /Users/georgeauto/orithena/orithena-pulse/data/reports/2026-03-06/arxiv__2603.05026v1.md
+2026-03-06 08:00:54,776 INFO intelligence.report: Saved report: /Users/georgeauto/orithena/orithena-pulse/data/reports/2026-03-06/arxiv__2603.04986v1.md
+2026-03-06 08:00:54,777 INFO intelligence.report: Saved report: /Users/georgeauto/orithena/orithena-pulse/data/reports/2026-03-06/arxiv__2603.04964v1.md
+2026-03-06 08:00:54,778 INFO intelligence.report: Saved report: /Users/georgeauto/orithena/orithena-pulse/data/reports/2026-03-06/arxiv__2603.04950v1.md
+2026-03-06 08:00:54,779 INFO intelligence.report: Saved report: /Users/georgeauto/orithena/orithena-pulse/data/reports/2026-03-06/arxiv__2603.04949v1.md
+2026-03-06 08:00:54,779 INFO intelligence.report: Saved report: /Users/georgeauto/orithena/orithena-pulse/data/reports/2026-03-06/arxiv__2603.04915v1.md
+2026-03-06 08:00:54,780 INFO intelligence.report: Saved report: /Users/georgeauto/orithena/orithena-pulse/data/reports/2026-03-06/arxiv__2603.04893v1.md
+2026-03-06 08:00:54,781 INFO intelligence.report: Saved report: /Users/georgeauto/orithena/orithena-pulse/data/reports/2026-03-06/arxiv__2603.04882v1.md
+2026-03-06 08:00:54,782 INFO intelligence.report: Saved report: /Users/georgeauto/orithena/orithena-pulse/data/reports/2026-03-06/arxiv__2603.04852v1.md
+2026-03-06 08:00:54,782 INFO intelligence.report: Saved report: /Users/georgeauto/orithena/orithena-pulse/data/reports/2026-03-06/arxiv__2603.04840v1.md
+2026-03-06 08:00:54,783 INFO intelligence.report: Saved report: /Users/georgeauto/orithena/orithena-pulse/data/reports/2026-03-06/arxiv__2603.04819v1.md
+2026-03-06 08:00:54,784 INFO intelligence.report: Saved report: /Users/georgeauto/orithena/orithena-pulse/data/reports/2026-03-06/arxiv__2603.04818v1.md
+2026-03-06 08:00:54,784 INFO intelligence.report: Saved report: /Users/georgeauto/orithena/orithena-pulse/data/reports/2026-03-06/arxiv__2603.04796v1.md
+2026-03-06 08:00:54,785 INFO intelligence.report: Saved report: /Users/georgeauto/orithena/orithena-pulse/data/reports/2026-03-06/arxiv__2603.04783v1.md
+2026-03-06 08:00:54,786 INFO intelligence.report: Saved report: /Users/georgeauto/orithena/orithena-pulse/data/reports/2026-03-06/arxiv__2603.04762v1.md
+2026-03-06 08:00:54,786 INFO intelligence.report: Saved report: /Users/georgeauto/orithena/orithena-pulse/data/reports/2026-03-06/arxiv__2603.04746v1.md
+2026-03-06 08:00:54,787 INFO intelligence.report: Saved report: /Users/georgeauto/orithena/orithena-pulse/data/reports/2026-03-06/arxiv__2603.04741v1.md
+2026-03-06 08:00:54,788 INFO intelligence.report: Saved report: /Users/georgeauto/orithena/orithena-pulse/data/reports/2026-03-06/arxiv__2603.04727v1.md
+2026-03-06 08:00:54,788 INFO intelligence.report: Saved report: /Users/georgeauto/orithena/orithena-pulse/data/reports/2026-03-06/arxiv__2603.04718v1.md
+2026-03-06 08:00:54,789 INFO intelligence.report: Saved report: /Users/georgeauto/orithena/orithena-pulse/data/reports/2026-03-06/arxiv__2603.04715v1.md
+2026-03-06 08:00:54,790 INFO intelligence.report: Saved report: /Users/georgeauto/orithena/orithena-pulse/data/reports/2026-03-06/arxiv__2603.04676v1.md
+2026-03-06 08:00:54,790 INFO intelligence.report: Saved report: /Users/georgeauto/orithena/orithena-pulse/data/reports/2026-03-06/arxiv__2603.04648v1.md
+2026-03-06 08:00:54,791 INFO intelligence.report: Saved report: /Users/georgeauto/orithena/orithena-pulse/data/reports/2026-03-06/arxiv__2603.04636v1.md
+2026-03-06 08:00:54,791 INFO intelligence.report: Saved report: /Users/georgeauto/orithena/orithena-pulse/data/reports/2026-03-06/arxiv__2603.04553v1.md
+2026-03-06 08:00:54,792 INFO intelligence.report: Saved report: /Users/georgeauto/orithena/orithena-pulse/data/reports/2026-03-06/github_trending__TeleAI-UAGI_Awesome-Agent-Memory.md
+2026-03-06 08:00:54,793 INFO intelligence.report: Saved report: /Users/georgeauto/orithena/orithena-pulse/data/reports/2026-03-06/rss__1c954698a9d1d298.md
+2026-03-06 08:00:54,794 INFO intelligence.report: Saved report: /Users/georgeauto/orithena/orithena-pulse/data/reports/2026-03-06/github_trending__SamurAIGPT_awesome-openclaw.md
+2026-03-06 08:00:54,794 INFO intelligence.report: Saved report: /Users/georgeauto/orithena/orithena-pulse/data/reports/2026-03-06/github_trending__ChesterRa_cccc.md
+2026-03-06 08:00:54,795 INFO intelligence.report: Saved report: /Users/georgeauto/orithena/orithena-pulse/data/reports/2026-03-06/github_trending__alishangtian_proteus-ai.md
+2026-03-06 08:00:54,796 INFO intelligence.report: Saved report: /Users/georgeauto/orithena/orithena-pulse/data/reports/2026-03-06/github_trending__Panniantong_Agent-Reach.md
+2026-03-06 08:00:54,796 INFO intelligence.report: Saved report: /Users/georgeauto/orithena/orithena-pulse/data/reports/2026-03-06/github_trending__SWE-agent_mini-swe-agent.md
+2026-03-06 08:00:54,797 INFO intelligence.report: Saved report: /Users/georgeauto/orithena/orithena-pulse/data/reports/2026-03-06/github_trending__bybren-llc_safe-agentic-workflow.md
+2026-03-06 08:00:54,797 INFO intelligence.report: Saved report: /Users/georgeauto/orithena/orithena-pulse/data/reports/2026-03-06/github_trending__666ghj_BettaFish.md
+2026-03-06 08:00:54,798 INFO intelligence.report: Saved report: /Users/georgeauto/orithena/orithena-pulse/data/reports/2026-03-06/github_trending__farion1231_cc-switch.md
+2026-03-06 08:00:54,798 INFO intelligence.report: Saved report: /Users/georgeauto/orithena/orithena-pulse/data/reports/2026-03-06/github_trending__PrefectHQ_fastmcp.md
+2026-03-06 08:00:54,799 INFO intelligence.report: Saved report: /Users/georgeauto/orithena/orithena-pulse/data/reports/2026-03-06/github_trending__Arindam200_awesome-ai-apps.md
+2026-03-06 08:00:54,799 INFO intelligence.report: Saved report: /Users/georgeauto/orithena/orithena-pulse/data/reports/2026-03-06/github_trending__modelcontextprotocol_registry.md
+2026-03-06 08:00:54,800 INFO intelligence.report: Saved report: /Users/georgeauto/orithena/orithena-pulse/data/reports/2026-03-06/github_trending__mrexodia_ida-pro-mcp.md
+2026-03-06 08:00:54,800 INFO intelligence.report: Saved report: /Users/georgeauto/orithena/orithena-pulse/data/reports/2026-03-06/github_trending__basicmachines-co_basic-memory.md
+2026-03-06 08:00:54,801 INFO intelligence.report: Saved report: /Users/georgeauto/orithena/orithena-pulse/data/reports/2026-03-06/github_trending__tgoai_tgo.md
+2026-03-06 08:00:54,801 INFO intelligence.report: Saved report: /Users/georgeauto/orithena/orithena-pulse/data/reports/2026-03-06/github_trending__AgileRL_AgileRL.md
+2026-03-06 08:00:54,802 INFO intelligence.report: Saved report: /Users/georgeauto/orithena/orithena-pulse/data/reports/2026-03-06/github_trending__mnemox-ai_tradememory-protocol.md
+2026-03-06 08:00:54,803 INFO intelligence.report: Saved report: /Users/georgeauto/orithena/orithena-pulse/data/reports/2026-03-06/github_trending__SciSharp_BotSharp.md
+2026-03-06 08:00:54,803 INFO intelligence.report: Saved report: /Users/georgeauto/orithena/orithena-pulse/data/reports/2026-03-06/github_trending__RightNow-AI_openfang.md
+2026-03-06 08:00:54,804 INFO intelligence.report: Saved report: /Users/georgeauto/orithena/orithena-pulse/data/reports/2026-03-06/arxiv__2603.05184v1.md
+2026-03-06 08:00:54,804 INFO intelligence.report: Saved report: /Users/georgeauto/orithena/orithena-pulse/data/reports/2026-03-06/github_trending__openlegion-ai_openlegion.md
+2026-03-06 08:00:54,805 INFO intelligence.report: Saved report: /Users/georgeauto/orithena/orithena-pulse/data/reports/2026-03-06/github_trending__saigontechnology_AgentCrew.md
+2026-03-06 08:00:54,806 INFO intelligence.report: Saved report: /Users/georgeauto/orithena/orithena-pulse/data/reports/2026-03-06/github_trending__BrikerMan_skilless.ai.md
+2026-03-06 08:00:54,807 INFO intelligence.report: Saved report: /Users/georgeauto/orithena/orithena-pulse/data/reports/2026-03-06/github_trending__adoslabsproject-gif_nothumanallowed.md
+2026-03-06 08:00:54,807 INFO intelligence.report: Saved report: /Users/georgeauto/orithena/orithena-pulse/data/reports/2026-03-06/github_trending__sudocode-ai_sudocode.md
+2026-03-06 08:00:54,808 INFO intelligence.report: Saved report: /Users/georgeauto/orithena/orithena-pulse/data/reports/2026-03-06/github_trending__hanruihua_ir-sim.md
+2026-03-06 08:00:54,808 INFO intelligence.report: Saved report: /Users/georgeauto/orithena/orithena-pulse/data/reports/2026-03-06/github_trending__Mintplex-Labs_anything-llm.md
+2026-03-06 08:00:54,809 INFO intelligence.report: Saved report: /Users/georgeauto/orithena/orithena-pulse/data/reports/2026-03-06/github_trending__alibaba_nacos.md
+2026-03-06 08:00:54,810 INFO intelligence.report: Saved report: /Users/georgeauto/orithena/orithena-pulse/data/reports/2026-03-06/github_trending__haydenbleasel_ultracite.md
+2026-03-06 08:00:54,810 INFO intelligence.report: Saved report: /Users/georgeauto/orithena/orithena-pulse/data/reports/2026-03-06/github_trending__lemonade-sdk_lemonade.md
+2026-03-06 08:00:54,811 INFO intelligence.report: Saved report: /Users/georgeauto/orithena/orithena-pulse/data/reports/2026-03-06/github_trending__backbay-labs_clawdstrike.md
+2026-03-06 08:00:54,811 INFO intelligence.report: Saved report: /Users/georgeauto/orithena/orithena-pulse/data/reports/2026-03-06/github_trending__first-fluke_oh-my-ag.md
+2026-03-06 08:00:54,812 INFO intelligence.report: Saved report: /Users/georgeauto/orithena/orithena-pulse/data/reports/2026-03-06/github_trending__oceanbase_powermem.md
+2026-03-06 08:00:54,812 INFO intelligence.report: Saved report: /Users/georgeauto/orithena/orithena-pulse/data/reports/2026-03-06/github_trending__AlexAnys_opencrew.md
+2026-03-06 08:00:54,813 INFO intelligence.report: Saved report: /Users/georgeauto/orithena/orithena-pulse/data/reports/2026-03-06/github_trending__josstei_maestro-gemini.md
+2026-03-06 08:00:54,813 INFO intelligence.report: Saved report: /Users/georgeauto/orithena/orithena-pulse/data/reports/2026-03-06/github_trending__xpzouying_xiaohongshu-mcp.md
+2026-03-06 08:00:54,814 INFO intelligence.report: Saved report: /Users/georgeauto/orithena/orithena-pulse/data/reports/2026-03-06/github_trending__Taoidle_plan-cascade.md
+2026-03-06 08:00:54,814 INFO intelligence.report: Saved report: /Users/georgeauto/orithena/orithena-pulse/data/reports/2026-03-06/github_trending__agentscope-ai_OpenJudge.md
+2026-03-06 08:00:54,815 INFO intelligence.report: Saved report: /Users/georgeauto/orithena/orithena-pulse/data/reports/2026-03-06/github_trending__Agent-Field_SWE-AF.md
+2026-03-06 08:00:54,815 INFO intelligence.report: Saved report: /Users/georgeauto/orithena/orithena-pulse/data/reports/2026-03-06/github_trending__lsdefine_pc-agent-loop.md
+2026-03-06 08:00:54,816 INFO intelligence.report: Saved report: /Users/georgeauto/orithena/orithena-pulse/data/reports/2026-03-06/github_trending__is0383kk_claude-multi-agent-api-server.md
+2026-03-06 08:00:54,816 INFO intelligence.report: Saved report: /Users/georgeauto/orithena/orithena-pulse/data/reports/2026-03-06/github_trending__taco-devs_termo-agent.md
+2026-03-06 08:00:54,817 INFO intelligence.report: Saved report: /Users/georgeauto/orithena/orithena-pulse/data/reports/2026-03-06/github_trending__mindfold-ai_Trellis.md
+2026-03-06 08:00:54,818 INFO intelligence.report: Saved report: /Users/georgeauto/orithena/orithena-pulse/data/reports/2026-03-06/github_trending__0xJacky_nginx-ui.md
+2026-03-06 08:00:54,818 INFO intelligence.report: Saved report: /Users/georgeauto/orithena/orithena-pulse/data/reports/2026-03-06/arxiv__2603.05060v1.md
+2026-03-06 08:00:54,819 INFO intelligence.report: Saved report: /Users/georgeauto/orithena/orithena-pulse/data/reports/2026-03-06/arxiv__2603.05024v1.md
+2026-03-06 08:00:54,819 INFO intelligence.report: Saved report: /Users/georgeauto/orithena/orithena-pulse/data/reports/2026-03-06/github_trending__Haervwe_open-webui-tools.md
+2026-03-06 08:00:54,820 INFO intelligence.report: Saved report: /Users/georgeauto/orithena/orithena-pulse/data/reports/2026-03-06/rss__a3c476a06ed3204d.md
+2026-03-06 08:00:54,821 INFO intelligence.report: Saved report: /Users/georgeauto/orithena/orithena-pulse/data/reports/2026-03-06/github_trending__shibing624_agentica.md
+2026-03-06 08:00:54,821 INFO intelligence.report: Saved report: /Users/georgeauto/orithena/orithena-pulse/data/reports/2026-03-06/github_trending__agentjido_jido_ai.md
+2026-03-06 08:00:54,822 INFO intelligence.report: Saved report: /Users/georgeauto/orithena/orithena-pulse/data/reports/2026-03-06/github_trending__mynaparrot_plugNmeet-server.md
+2026-03-06 08:00:54,822 INFO intelligence.report: Saved report: /Users/georgeauto/orithena/orithena-pulse/data/reports/2026-03-06/github_trending__AR6420_Hail_Hydra.md
+2026-03-06 08:00:54,823 INFO intelligence.report: Saved report: /Users/georgeauto/orithena/orithena-pulse/data/reports/2026-03-06/github_trending__Joonghyun-Lee-Frieren_oh-my-gemini-cli.md
+2026-03-06 08:00:54,823 INFO intelligence.report: Saved report: /Users/georgeauto/orithena/orithena-pulse/data/reports/2026-03-06/github_trending__1850298154_memory_agent_hub.md
+2026-03-06 08:00:54,824 INFO intelligence.report: Saved report: /Users/georgeauto/orithena/orithena-pulse/data/reports/2026-03-06/github_trending__go-kratos_blades.md
+2026-03-06 08:00:54,825 INFO intelligence.report: Saved report: /Users/georgeauto/orithena/orithena-pulse/data/reports/2026-03-06/github_trending__cafferychen777_ChatSpatial.md
+2026-03-06 08:00:54,825 INFO intelligence.report: Saved report: /Users/georgeauto/orithena/orithena-pulse/data/reports/2026-03-06/github_trending__vladkesler_initrunner.md
+2026-03-06 08:00:54,826 INFO intelligence.report: Saved report: /Users/georgeauto/orithena/orithena-pulse/data/reports/2026-03-06/github_trending__rush86999_atom.md
+2026-03-06 08:00:54,826 INFO intelligence.report: Saved report: /Users/georgeauto/orithena/orithena-pulse/data/reports/2026-03-06/github_trending__bleuropa_loomkin.md
+2026-03-06 08:00:54,827 INFO intelligence.report: Saved report: /Users/georgeauto/orithena/orithena-pulse/data/reports/2026-03-06/github_trending__julienlucas_agentic-rag-multiagent.md
+2026-03-06 08:00:54,828 INFO intelligence.report: Saved report: /Users/georgeauto/orithena/orithena-pulse/data/reports/2026-03-06/github_trending__MarlBurroW_kinbot.md
+2026-03-06 08:00:54,828 INFO intelligence.report: Saved report: /Users/georgeauto/orithena/orithena-pulse/data/reports/2026-03-06/github_trending__shaharia-lab_agento.md
+2026-03-06 08:00:54,829 INFO intelligence.report: Saved report: /Users/georgeauto/orithena/orithena-pulse/data/reports/2026-03-06/github_trending__groupultra_telegram-search.md
+2026-03-06 08:00:54,829 INFO intelligence.report: Saved report: /Users/georgeauto/orithena/orithena-pulse/data/reports/2026-03-06/github_trending__D4Vinci_Scrapling.md
+2026-03-06 08:00:54,830 INFO intelligence.report: Saved report: /Users/georgeauto/orithena/orithena-pulse/data/reports/2026-03-06/github_trending__qax-os_excelize.md
+2026-03-06 08:00:54,830 INFO intelligence.report: Saved report: /Users/georgeauto/orithena/orithena-pulse/data/reports/2026-03-06/github_trending__zhkl0228_unidbg.md
+2026-03-06 08:00:54,831 INFO intelligence.report: Saved report: /Users/georgeauto/orithena/orithena-pulse/data/reports/2026-03-06/github_trending__joreilly_PeopleInSpace.md
+2026-03-06 08:00:54,831 INFO intelligence.report: Saved report: /Users/georgeauto/orithena/orithena-pulse/data/reports/2026-03-06/github_trending__av_harbor.md
+2026-03-06 08:00:54,832 INFO intelligence.report: Saved report: /Users/georgeauto/orithena/orithena-pulse/data/reports/2026-03-06/github_trending__rlresearch_dr-tulu.md
+2026-03-06 08:00:54,832 INFO intelligence.report: Saved report: /Users/georgeauto/orithena/orithena-pulse/data/reports/2026-03-06/github_trending__aofp_yume.md
+2026-03-06 08:00:54,833 INFO intelligence.report: Saved report: /Users/georgeauto/orithena/orithena-pulse/data/reports/2026-03-06/github_trending__cyanheads_mcp-ts-template.md
+2026-03-06 08:00:54,833 INFO intelligence.report: Saved report: /Users/georgeauto/orithena/orithena-pulse/data/reports/2026-03-06/github_trending__Natfii_ZeroClaw-Android.md
+2026-03-06 08:00:54,834 INFO intelligence.report: Saved report: /Users/georgeauto/orithena/orithena-pulse/data/reports/2026-03-06/github_trending__microsoft_autogen.md
+2026-03-06 08:00:54,834 INFO intelligence.report: Saved report: /Users/georgeauto/orithena/orithena-pulse/data/reports/2026-03-06/github_trending__Upsonic_Upsonic.md
+2026-03-06 08:00:54,835 INFO intelligence.report: Saved report: /Users/georgeauto/orithena/orithena-pulse/data/reports/2026-03-06/github_trending__microsoft_playwright-mcp.md
+2026-03-06 08:00:54,835 INFO intelligence.report: Saved report: /Users/georgeauto/orithena/orithena-pulse/data/reports/2026-03-06/github_trending__CursorTouch_Windows-MCP.md
+2026-03-06 08:00:54,836 INFO intelligence.report: Saved report: /Users/georgeauto/orithena/orithena-pulse/data/reports/2026-03-06/github_trending__exa-labs_exa-mcp-server.md
+2026-03-06 08:00:54,836 INFO intelligence.report: Saved report: /Users/georgeauto/orithena/orithena-pulse/data/reports/2026-03-06/github_trending__ItsWendell_palot.md
+2026-03-06 08:00:54,837 INFO intelligence.report: Saved report: /Users/georgeauto/orithena/orithena-pulse/data/reports/2026-03-06/github_trending__oil-oil_wolfcha.md
+2026-03-06 08:00:54,837 INFO intelligence.report: Saved report: /Users/georgeauto/orithena/orithena-pulse/data/reports/2026-03-06/github_trending__supaku_agentfactory.md
+2026-03-06 08:00:54,838 INFO intelligence.report: Saved report: /Users/georgeauto/orithena/orithena-pulse/data/reports/2026-03-06/github_trending__truffle-ai_dexto.md
+2026-03-06 08:00:54,839 INFO intelligence.report: Saved report: /Users/georgeauto/orithena/orithena-pulse/data/reports/2026-03-06/github_trending__kimtth_awesome-azure-openai-llm.md
+2026-03-06 08:00:54,839 INFO intelligence.report: Saved report: /Users/georgeauto/orithena/orithena-pulse/data/reports/2026-03-06/github_trending__yeuxuan_openclaw-docs.md
+2026-03-06 08:00:54,840 INFO intelligence.report: Saved report: /Users/georgeauto/orithena/orithena-pulse/data/reports/2026-03-06/hn__47263036.md
+2026-03-06 08:00:54,840 INFO intelligence.report: Saved report: /Users/georgeauto/orithena/orithena-pulse/data/reports/2026-03-06/github_trending__team9ai_team9.md
+2026-03-06 08:00:54,841 INFO intelligence.report: Saved report: /Users/georgeauto/orithena/orithena-pulse/data/reports/2026-03-06/github_trending__shinpr_sub-agents-mcp.md
+2026-03-06 08:00:54,841 INFO intelligence.report: Saved report: /Users/georgeauto/orithena/orithena-pulse/data/reports/2026-03-06/github_trending__toolsdk-ai_toolsdk-mcp-registry.md
+2026-03-06 08:00:54,842 INFO intelligence.report: Saved report: /Users/georgeauto/orithena/orithena-pulse/data/reports/2026-03-06/github_trending__rllm-org_rllm.md
+2026-03-06 08:00:54,842 INFO intelligence.report: Saved report: /Users/georgeauto/orithena/orithena-pulse/data/reports/2026-03-06/github_trending__mims-harvard_ToolUniverse.md
+2026-03-06 08:00:54,843 INFO intelligence.report: Saved report: /Users/georgeauto/orithena/orithena-pulse/data/reports/2026-03-06/github_trending__giselles-ai_giselle.md
+2026-03-06 08:00:54,843 INFO intelligence.report: Saved report: /Users/georgeauto/orithena/orithena-pulse/data/reports/2026-03-06/github_trending__ForceInjection_AI-fundermentals.md
+2026-03-06 08:00:54,844 INFO intelligence.report: Saved report: /Users/georgeauto/orithena/orithena-pulse/data/reports/2026-03-06/github_trending__adnaan-worker_Adnify.md
+2026-03-06 08:00:54,845 INFO intelligence.report: Saved report: /Users/georgeauto/orithena/orithena-pulse/data/reports/2026-03-06/github_trending__didilili_ai-agents-from-zero.md
+2026-03-06 08:00:54,845 INFO pulse: Generated 353 individual reports
+2026-03-06 08:00:54,854 INFO intelligence.digest: Generated digest: 353 total, 353 passed, 0 top signal
+2026-03-06 08:00:54,855 INFO pulse: Saved digest to /Users/georgeauto/orithena/orithena-pulse/data/digest-2026-03-06.md
+2026-03-06 08:00:54,859 INFO pulse: === Stage 6: Discord ===
+2026-03-06 08:00:54,873 INFO discord_poster: Found 5 new signals to post (top 5)
+2026-03-06 08:00:55,233 INFO discord_poster: Posted: [AINews] GPT 5.4: SOTA Knowledge Work -and- Coding -and- CUA Model, OpenAI is so very back (score: 7.6)
+2026-03-06 08:00:56,179 INFO discord_poster: Posted: Cursor's Third Era: Cloud Agents (score: 7.5)
+2026-03-06 08:00:57,163 INFO discord_poster: Posted: Building AI Coding Agents for the Terminal: Scaffolding, Harness, Context Engineering, and Lessons Learned (score: 7.3)
+2026-03-06 08:00:58,145 INFO discord_poster: Posted: microsoft/mcp-for-beginners (score: 6.8)
+2026-03-06 08:00:59,180 INFO discord_poster: Posted: KARL: Knowledge Agents via Reinforcement Learning (score: 6.8)
+2026-03-06 08:00:59,824 INFO discord_poster: Posted 5/5 new signals
+
+==================================================
+  Orithena Pulse — Pipeline Summary
+==================================================
+  Date:             2026-03-06
+  Items scraped:    459
+  After dedup:      459
+  Passed curation:  353
+  Reports generated:353
+  Site output:      /Users/georgeauto/orithena/orithena-pulse/output/site
+==================================================
+
+2026-03-06 08:00:59,827 INFO pulse: Orithena Pulse pipeline complete
