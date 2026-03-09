@@ -15,5 +15,6 @@ if [[ -f "$CORE_ROOT/.env" ]]; then
     set +a
 fi
 
-cd "$PULSE_ROOT"
-exec python3 -u run.py --domain agentic
+ORG_ROOT="$(cd "$PULSE_ROOT/../orithena-org" && pwd)"
+cd "$ORG_ROOT"
+exec python3 -u -m content.pipeline --domain pulse
