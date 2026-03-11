@@ -1,67 +1,47 @@
-name: Pulse Pipeline
+name: Deploy to GitHub Pages
 
 on:
-  schedule:
-    # Run daily at 7 AM Central (1 PM UTC)
-    - cron: '0 13 * * *'
   push:
     branches: [main]
+    paths:
+      - 'output/site/**'
   workflow_dispatch:
 
 permissions:
-  contents: write
+  contents: read
   pages: write
   id-token: write
 
 concurrency:
-  group: pulse-pipeline
+  group: pulse-pages
   cancel-in-progress: false
 
 jobs:
-  pipeline:
-    runs-on: ubuntu-latest
-    steps:
-      - name: Checkout orithena-pulse
-        uses: actions/checkout@v4
-        with:
-          path: orithena-pulse
-
-      - name: Checkout orithena-org (unified pipeline)
-        uses: actions/checkout@v4
-        with:
-          repository: Orithena-org/orithena-org
-          path: orithena-org
-          token: ${{ secrets.ORG_REPO_TOKEN || github.token }}
-
-      - uses: actions/setup-python@v5
-        with:
-          python-version: '3.11'
-          cache: pip
-          cache-dependency-path: orithena-pulse/requirements.txt
-
-      - name: Install dependencies
-        run: pip install -r orithena-pulse/requirements.txt
-
-      - name: Run pipeline (scrape + build, no Discord posting)
-        working-directory: orithena-org
-        run: |
-          python -m content.pipeline --domain pulse --no-post
-          touch ../orithena-pulse/output/site/.nojekyll
-        env:
-          SITE_URL: https://orithena-org.github.io/orithena-pulse
-
-      - name: Upload Pages artifact
-        uses: actions/upload-pages-artifact@v3
-        with:
-          path: orithena-pulse/output/site
-
   deploy:
-    needs: pipeline
     runs-on: ubuntu-latest
     environment:
       name: github-pages
       url: ${{ steps.deployment.outputs.page_url }}
     steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Verify site exists
+        run: |
+          if [ ! -f output/site/index.html ]; then
+            echo "::error::No site output found at output/site/index.html"
+            exit 1
+          fi
+          echo "Site found, deploying..."
+
+      - name: Add .nojekyll
+        run: touch output/site/.nojekyll
+
+      - name: Upload Pages artifact
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: output/site
+
       - name: Deploy to GitHub Pages
         id: deployment
         uses: actions/deploy-pages@v4
