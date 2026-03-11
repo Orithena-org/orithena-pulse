@@ -63,3 +63,107 @@
 08:01:08 content.sitegen.build INFO Site build complete: /Users/georgeauto/orithena/orithena-pulse/output/site
 08:01:08 __main__ INFO Content health metrics updated
 08:01:08 __main__ INFO Pipeline complete for pulse
+08:00:00 __main__ INFO Pipeline: domain=pulse date=2026-03-11 demo=False
+/Users/georgeauto/Library/Python/3.9/lib/python/site-packages/urllib3/__init__.py:35: NotOpenSSLWarning: urllib3 v2 only supports OpenSSL 1.1.1+, currently the 'ssl' module is compiled with 'LibreSSL 2.8.3'. See: https://github.com/urllib3/urllib3/issues/3020
+  warnings.warn(
+08:00:00 content.adapters.base INFO Running adapter: hn
+08:00:11 content.adapters.hn INFO HN adapter collected 20 unique items
+08:00:11 content.adapters.base INFO Adapter hn fetched 20 items
+08:00:11 __main__ INFO Fetched 20 items from hn
+08:00:11 content.adapters.base INFO Running adapter: arxiv
+08:00:42 urllib3.connectionpool WARNING Retrying (Retry(total=2, connect=None, read=None, redirect=None, status=None)) after connection broken by 'ReadTimeoutError("HTTPSConnectionPool(host='export.arxiv.org', port=443): Read timed out. (read timeout=30)")': /api/query?search_query=%28cat%3Acs.AI+OR+cat%3Acs.MA+OR+cat%3Acs.LG%29+AND+%28all%3A%22agent%22+OR+all%3A%22tool+use%22+OR+all%3A%22multi-agent%22+OR+all%3A%22autonomous%22+OR+all%3A%22memory+augmented%22+OR+all%3A%22planning%22+OR+all%3A%22reasoning%22%29&start=0&max_results=100&sortBy=submittedDate&sortOrder=descending
+08:01:14 urllib3.connectionpool WARNING Retrying (Retry(total=1, connect=None, read=None, redirect=None, status=None)) after connection broken by 'ReadTimeoutError("HTTPSConnectionPool(host='export.arxiv.org', port=443): Read timed out. (read timeout=30)")': /api/query?search_query=%28cat%3Acs.AI+OR+cat%3Acs.MA+OR+cat%3Acs.LG%29+AND+%28all%3A%22agent%22+OR+all%3A%22tool+use%22+OR+all%3A%22multi-agent%22+OR+all%3A%22autonomous%22+OR+all%3A%22memory+augmented%22+OR+all%3A%22planning%22+OR+all%3A%22reasoning%22%29&start=0&max_results=100&sortBy=submittedDate&sortOrder=descending
+08:01:43 content.adapters.arxiv ERROR Failed to fetch arXiv batch at start=0
+urllib3.exceptions.ResponseError: too many 429 error responses
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/Users/georgeauto/Library/Python/3.9/lib/python/site-packages/requests/adapters.py", line 644, in send
+    resp = conn.urlopen(
+  File "/Users/georgeauto/Library/Python/3.9/lib/python/site-packages/urllib3/connectionpool.py", line 871, in urlopen
+    return self.urlopen(
+  File "/Users/georgeauto/Library/Python/3.9/lib/python/site-packages/urllib3/connectionpool.py", line 871, in urlopen
+    return self.urlopen(
+  File "/Users/georgeauto/Library/Python/3.9/lib/python/site-packages/urllib3/connectionpool.py", line 942, in urlopen
+    return self.urlopen(
+  File "/Users/georgeauto/Library/Python/3.9/lib/python/site-packages/urllib3/connectionpool.py", line 932, in urlopen
+    retries = retries.increment(method, url, response=response, _pool=self)
+  File "/Users/georgeauto/Library/Python/3.9/lib/python/site-packages/urllib3/util/retry.py", line 535, in increment
+    raise MaxRetryError(_pool, url, reason) from reason  # type: ignore[arg-type]
+urllib3.exceptions.MaxRetryError: HTTPSConnectionPool(host='export.arxiv.org', port=443): Max retries exceeded with url: /api/query?search_query=%28cat%3Acs.AI+OR+cat%3Acs.MA+OR+cat%3Acs.LG%29+AND+%28all%3A%22agent%22+OR+all%3A%22tool+use%22+OR+all%3A%22multi-agent%22+OR+all%3A%22autonomous%22+OR+all%3A%22memory+augmented%22+OR+all%3A%22planning%22+OR+all%3A%22reasoning%22%29&start=0&max_results=100&sortBy=submittedDate&sortOrder=descending (Caused by ResponseError('too many 429 error responses'))
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/Users/georgeauto/orithena/orithena-org/content/adapters/arxiv.py", line 50, in fetch
+    resp = self.session.get(ARXIV_API_URL, params=params, timeout=self.timeout)
+  File "/Users/georgeauto/Library/Python/3.9/lib/python/site-packages/requests/sessions.py", line 602, in get
+    return self.request("GET", url, **kwargs)
+  File "/Users/georgeauto/Library/Python/3.9/lib/python/site-packages/requests/sessions.py", line 589, in request
+    resp = self.send(prep, **send_kwargs)
+  File "/Users/georgeauto/Library/Python/3.9/lib/python/site-packages/requests/sessions.py", line 724, in send
+    history = [resp for resp in gen]
+  File "/Users/georgeauto/Library/Python/3.9/lib/python/site-packages/requests/sessions.py", line 724, in <listcomp>
+    history = [resp for resp in gen]
+  File "/Users/georgeauto/Library/Python/3.9/lib/python/site-packages/requests/sessions.py", line 265, in resolve_redirects
+    resp = self.send(
+  File "/Users/georgeauto/Library/Python/3.9/lib/python/site-packages/requests/sessions.py", line 703, in send
+    r = adapter.send(request, **kwargs)
+  File "/Users/georgeauto/Library/Python/3.9/lib/python/site-packages/requests/adapters.py", line 668, in send
+    raise RetryError(e, request=request)
+requests.exceptions.RetryError: HTTPSConnectionPool(host='export.arxiv.org', port=443): Max retries exceeded with url: /api/query?search_query=%28cat%3Acs.AI+OR+cat%3Acs.MA+OR+cat%3Acs.LG%29+AND+%28all%3A%22agent%22+OR+all%3A%22tool+use%22+OR+all%3A%22multi-agent%22+OR+all%3A%22autonomous%22+OR+all%3A%22memory+augmented%22+OR+all%3A%22planning%22+OR+all%3A%22reasoning%22%29&start=0&max_results=100&sortBy=submittedDate&sortOrder=descending (Caused by ResponseError('too many 429 error responses'))
+08:01:43 content.adapters.arxiv INFO arXiv adapter collected 0 items
+08:01:43 content.adapters.base INFO Adapter arxiv fetched 0 items
+08:01:43 __main__ INFO Fetched 0 items from arxiv
+08:01:43 content.adapters.base INFO Running adapter: github_trending
+08:02:05 content.adapters.github_trending INFO GitHub trending adapter collected 341 unique repos
+08:02:05 content.adapters.base INFO Adapter github_trending fetched 341 items
+08:02:05 __main__ INFO Fetched 341 items from github_trending
+08:02:05 content.adapters.base INFO Running adapter: rss
+08:02:07 content.adapters.rss WARNING RSS feed 'The Batch (deeplearning.ai)' had parse errors: <unknown>:2:4391: not well-formed (invalid token)
+08:02:18 content.adapters.rss WARNING RSS feed 'Anthropic Blog' had parse errors: <unknown>:2:3549: not well-formed (invalid token)
+08:02:23 content.adapters.rss INFO RSS adapter collected 13 items
+08:02:23 content.adapters.base INFO Adapter rss fetched 13 items
+08:02:23 __main__ INFO Fetched 13 items from rss
+08:02:23 __main__ INFO Deduped 374 -> 373 items
+08:02:23 __main__ INFO Scored 373 items, 343 passed threshold
+08:02:27 content.intelligence.fit_evaluator WARNING Claude HTTP API call failed: Expecting value: line 1 column 1 (char 0)
+08:02:27 content.intelligence.fit_evaluator INFO API unavailable -- using placeholders for all items
+08:02:27 content.intelligence.fit_evaluator INFO Evaluated fit for 343 items (API available: False)
+08:02:27 __main__ INFO Fit evaluation complete for 343 items
+08:02:27 __main__ INFO Saved 373 items to DB
+08:02:27 content.discord.poster INFO Posting 5 new items for pulse
+08:02:27 content.discord.poster INFO Posted: [AINews] Yann LeCun’s AMI Labs launches with a $1B seed @ $4.5B to build world models around JEPA
+08:02:28 content.discord.poster INFO Posted: liyupi/ai-guide
+08:02:29 content.discord.poster INFO Posted: affaan-m/everything-claude-code
+08:02:30 content.discord.poster INFO Posted: mcp-use/mcp-use
+08:02:32 content.discord.poster INFO Posted: zilliztech/claude-context
+08:02:32 content.discord.poster INFO Posted 5/5 items for pulse
+08:02:32 content.intelligence.report INFO Saved report: /Users/georgeauto/orithena/orithena-org/content/data/reports/2026-03-11/rss__43a6dbb4c87a226c.md
+08:02:32 content.intelligence.report INFO Saved report: /Users/georgeauto/orithena/orithena-org/content/data/reports/2026-03-11/github_trending__doobidoo_mcp-memory-service.md
+08:02:32 content.intelligence.report INFO Saved report: /Users/georgeauto/orithena/orithena-org/content/data/reports/2026-03-11/rss__044c1b72bea6187f.md
+08:02:32 content.intelligence.report INFO Saved report: /Users/georgeauto/orithena/orithena-org/content/data/reports/2026-03-11/rss__1900de09e961b631.md
+08:02:32 content.intelligence.report INFO Saved report: /Users/georgeauto/orithena/orithena-org/content/data/reports/2026-03-11/github_trending__ruvnet_ruflo.md
+08:02:32 content.intelligence.report INFO Saved report: /Users/georgeauto/orithena/orithena-org/content/data/reports/2026-03-11/github_trending__massgen_MassGen.md
+08:02:32 content.intelligence.report INFO Saved report: /Users/georgeauto/orithena/orithena-org/content/data/reports/2026-03-11/github_trending__lobehub_lobehub.md
+08:02:32 content.intelligence.report INFO Saved report: /Users/georgeauto/orithena/orithena-org/content/data/reports/2026-03-11/github_trending__mudler_LocalAI.md
+08:02:32 content.intelligence.report INFO Saved report: /Users/georgeauto/orithena/orithena-org/content/data/reports/2026-03-11/github_trending__danny-avila_LibreChat.md
+08:02:32 content.intelligence.report INFO Saved report: /Users/georgeauto/orithena/orithena-org/content/data/reports/2026-03-11/github_trending__microsoft_mcp-for-beginners.md
+08:02:32 content.intelligence.report INFO Saved report: /Users/georgeauto/orithena/orithena-org/content/data/reports/2026-03-11/github_trending__liyupi_ai-guide.md
+08:02:32 content.intelligence.report INFO Saved report: /Users/georgeauto/orithena/orithena-org/content/data/reports/2026-03-11/github_trending__IBM_mcp-context-forge.md
+08:02:32 content.intelligence.report INFO Saved report: /Users/georgeauto/orithena/orithena-org/content/data/reports/2026-03-11/github_trending__affaan-m_everything-claude-code.md
+08:02:32 content.intelligence.report INFO Saved report: /Users/georgeauto/orithena/orithena-org/content/data/reports/2026-03-11/github_trending__mcp-use_mcp-use.md
+08:02:32 content.intelligence.report INFO Saved report: /Users/georgeauto/orithena/orithena-org/content/data/reports/2026-03-11/github_trending__zilliztech_claude-context.md
+08:02:32 content.intelligence.report INFO Saved report: /Users/georgeauto/orithena/orithena-org/content/data/reports/2026-03-11/github_trending__Arvincreator_project-golem.md
+08:02:32 content.intelligence.report INFO Saved report: /Users/georgeauto/orithena/orithena-org/content/data/reports/2026-03-11/github_trending__labring_FastGPT.md
+08:02:32 content.intelligence.report INFO Saved report: /Users/georgeauto/orithena/orithena-org/content/data/reports/2026-03-11/github_trending__kill136_claude-code-open.md
+08:02:32 content.intelligence.report INFO Saved report: /Users/georgeauto/orithena/orithena-org/content/data/reports/2026-03-11/github_trending__gustavoeenriquez_MakerAi.md
+08:02:32 content.intelligence.report INFO Saved report: /Users/georgeauto/orithena/orithena-org/content/data/reports/2026-03-11/github_trending__moltis-org_moltis.md
+08:02:32 __main__ INFO Generated 20 reports
+08:02:32 __main__ INFO Wrote digest to /Users/georgeauto/orithena/orithena-pulse/output/site/digest/2026-03-11.md
+08:02:32 content.sitegen.build INFO Wrote index.html
+08:02:32 content.sitegen.build INFO Wrote about.html
+08:02:32 content.sitegen.build INFO Site build complete: /Users/georgeauto/orithena/orithena-pulse/output/site
+08:02:32 __main__ INFO Content health metrics updated
+08:02:32 __main__ INFO Pipeline complete for pulse
