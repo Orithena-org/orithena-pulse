@@ -1,5 +1,6 @@
 #!/usr/bin/env bash
-# Wrapper script for launchd — loads .env and runs the Pulse pipeline.
+# Wrapper script for launchd — loads .env, runs the Pulse pipeline,
+# then commits and pushes site output so GitHub Pages deploys automatically.
 set -euo pipefail
 
 PULSE_ROOT="$(cd "$(dirname "$0")/.." && pwd)"
@@ -17,4 +18,15 @@ fi
 
 ORG_ROOT="$(cd "$PULSE_ROOT/../orithena-org" && pwd)"
 cd "$ORG_ROOT"
-exec python3 -u -m content.pipeline --domain pulse
+python3 -u -m content.pipeline --domain pulse
+
+# --- Deploy: commit and push site output if changed ---
+cd "$PULSE_ROOT"
+if ! git diff --quiet output/site/ 2>/dev/null || [ -n "$(git ls-files --others --exclude-standard output/site/)" ]; then
+    git add output/site/
+    git commit -m "chore(site): update generated site output $(date +%Y-%m-%d)"
+    git push origin main
+    echo "[deploy] Site output committed and pushed."
+else
+    echo "[deploy] No site changes to commit."
+fi
