@@ -1,0 +1,155 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Orithena Pulse: Agentic AI</title>
+    <link></link>
+    <description>Daily intelligence on AI agents, memory, orchestration, and tool use</description>
+    <lastBuildDate>Sat, 14 Mar 2026 13:01:04 +0000</lastBuildDate>
+    <item>
+      <title>[AINews] Context Drought</title>
+      <link>https://www.latent.space/p/ainews-context-drought</link>
+      <description>&lt;p&gt;Anthropic is rightfully being celebrated today for releasing their 1M context models in GA, with SOTA MRCR results that fight &lt;a href="https://research.trychroma.com/context-rot"&gt;Context Rot&lt;/a&gt; for as long as possible:&lt;/p&gt;&lt;div class="captioned-image-container"&gt;&lt;figure&gt;&lt;a class="image-link image…</description>
+      <pubDate>2026-03-14T03:25:49+00:00</pubDate>
+      <guid>https://www.latent.space/p/ainews-context-drought</guid>
+    </item>
+    <item>
+      <title>[AINews] The high-return activity of raising your aspirations for LLMs</title>
+      <link>https://www.latent.space/p/ainews-the-high-return-activity-of</link>
+      <description>&lt;p&gt;We thoroughly enjoyed &lt;a href="https://www.latent.space/p/turbopuffer"&gt;the charismatic Simon Eskildsen of Turbopuffer&lt;/a&gt; on today&amp;#8217;s pod, and highly encourage listening in even if you&amp;#8217;re not a database nerd:&lt;/p&gt;&lt;div class="digest-post-embed"&gt;&lt;/div&gt;&lt;p&gt;&lt;/p&gt;&lt;p&gt;As for today&amp;#8217;s op-ed…</description>
+      <pubDate>2026-03-13T06:51:27+00:00</pubDate>
+      <guid>https://www.latent.space/p/ainews-the-high-return-activity-of</guid>
+    </item>
+    <item>
+      <title>XSkill: Continual Learning from Experience and Skills in Multimodal Agents</title>
+      <link>http://arxiv.org/abs/2603.12056v1</link>
+      <description>Multimodal agents can now tackle complex reasoning tasks with diverse tools, yet they still suffer from inefficient tool use and inflexible orchestration in open-ended settings. A central challenge is enabling such agents to continually improve without parameter updates by learning from past trajec…</description>
+      <pubDate>2026-03-12T15:25:57+00:00</pubDate>
+      <guid>http://arxiv.org/abs/2603.12056v1</guid>
+    </item>
+    <item>
+      <title>LABSHIELD: A Multimodal Benchmark for Safety-Critical Reasoning and Planning in Scientific Laboratories</title>
+      <link>http://arxiv.org/abs/2603.11987v1</link>
+      <description>Artificial intelligence is increasingly catalyzing scientific automation, with multimodal large language model (MLLM) agents evolving from lab assistants into self-driving lab operators. This transition imposes stringent safety requirements on laboratory environments, where fragile glassware, hazar…</description>
+      <pubDate>2026-03-12T14:38:13+00:00</pubDate>
+      <guid>http://arxiv.org/abs/2603.11987v1</guid>
+    </item>
+    <item>
+      <title>MervinPraison/PraisonAI</title>
+      <link>https://github.com/MervinPraison/PraisonAI</link>
+      <description>PraisonAI 🦞 - Your 24/7 AI employee team. Automate and solve complex challenges with low-code multi-agent AI that plans, researches, codes, and delivers to Telegram, Discord, and WhatsApp. Handoffs, guardrails, memory, RAG, 100+ LLMs.</description>
+      <pubDate>2026-03-14T11:53:48+00:00</pubDate>
+      <guid>https://github.com/MervinPraison/PraisonAI</guid>
+    </item>
+    <item>
+      <title>Strategic Navigation or Stochastic Search? How Agents and Humans Reason Over Document Collections</title>
+      <link>http://arxiv.org/abs/2603.12180v1</link>
+      <description>Multimodal agents offer a promising path to automating complex document-intensive workflows. Yet, a critical question remains: do these agents demonstrate genuine strategic reasoning, or merely stochastic trial-and-error search? To address this, we introduce MADQA, a benchmark of 2,250 human-author…</description>
+      <pubDate>2026-03-12T17:11:22+00:00</pubDate>
+      <guid>http://arxiv.org/abs/2603.12180v1</guid>
+    </item>
+    <item>
+      <title>MobileKernelBench: Can LLMs Write Efficient Kernels for Mobile Devices?</title>
+      <link>http://arxiv.org/abs/2603.11935v1</link>
+      <description>Large language models (LLMs) have demonstrated remarkable capabilities in code generation, yet their potential for generating kernels specifically for mobile de- vices remains largely unexplored. In this work, we extend the scope of automated kernel generation to the mobile domain to investigate th…</description>
+      <pubDate>2026-03-12T13:48:11+00:00</pubDate>
+      <guid>http://arxiv.org/abs/2603.11935v1</guid>
+    </item>
+    <item>
+      <title>The price of decentralization in managing engineering systems through multi-agent reinforcement learning</title>
+      <link>http://arxiv.org/abs/2603.11884v1</link>
+      <description>Inspection and maintenance (I&amp;M) planning involves sequential decision making under uncertainties and incomplete information, and can be modeled as a partially observable Markov decision process (POMDP). While single-agent deep reinforcement learning provides approximate solutions to POMDPs, it doe…</description>
+      <pubDate>2026-03-12T13:00:21+00:00</pubDate>
+      <guid>http://arxiv.org/abs/2603.11884v1</guid>
+    </item>
+    <item>
+      <title>Resource-Efficient Iterative LLM-Based NAS with Feedback Memory</title>
+      <link>http://arxiv.org/abs/2603.12091v1</link>
+      <description>Neural Architecture Search (NAS) automates network design, but conventional methods demand substantial computational resources. We propose a closed-loop pipeline leveraging large language models (LLMs) to iteratively generate, evaluate, and refine convolutional neural network architectures for imag…</description>
+      <pubDate>2026-03-12T16:00:22+00:00</pubDate>
+      <guid>http://arxiv.org/abs/2603.12091v1</guid>
+    </item>
+    <item>
+      <title>CogSearch: A Cognitive-Aligned Multi-Agent Framework for Proactive Decision Support in E-Commerce Search</title>
+      <link>http://arxiv.org/abs/2603.11927v1</link>
+      <description>Modern e-commerce search engines, largely rooted in passive retrieval-and-ranking models, frequently fail to support complex decision-making, leaving users overwhelmed by cognitive friction. In this paper, we introduce CogSearch, a novel cognitive-oriented multi-agent framework that reimagines e-co…</description>
+      <pubDate>2026-03-12T13:39:20+00:00</pubDate>
+      <guid>http://arxiv.org/abs/2603.11927v1</guid>
+    </item>
+    <item>
+      <title>danny-avila/LibreChat</title>
+      <link>https://github.com/danny-avila/LibreChat</link>
+      <description>Enhanced ChatGPT Clone: Features Agents, MCP, DeepSeek, Anthropic, AWS, OpenAI, Responses API, Azure, Groq, o1, GPT-5, Mistral, OpenRouter, Vertex AI, Gemini, Artifacts, AI model switching, message search, Code Interpreter, langchain, DALL-E-3, OpenAPI Actions, Functions, Secure Multi-User Auth, Pr…</description>
+      <pubDate>2026-03-14T07:43:03+00:00</pubDate>
+      <guid>https://github.com/danny-avila/LibreChat</guid>
+    </item>
+    <item>
+      <title>massgen/MassGen</title>
+      <link>https://github.com/massgen/MassGen</link>
+      <description>🚀 MassGen is an open-source multi-agent scaling system that runs in your terminal, autonomously orchestrating frontier models and agents to collaborate, reason, and produce high-quality results. | Join us on Discord: discord.massgen.ai</description>
+      <pubDate>2026-03-14T07:52:16+00:00</pubDate>
+      <guid>https://github.com/massgen/MassGen</guid>
+    </item>
+    <item>
+      <title>alfredolopez80/multi-agent-ralph-loop</title>
+      <link>https://github.com/alfredolopez80/multi-agent-ralph-loop</link>
+      <description>Orchestration system for Claude Code with memory-driven planning, multi-agent coordination, Agent Teams integration, automatic learning, and comprehensive security validation (Grade A-). v2.94.0</description>
+      <pubDate>2026-03-14T01:55:54+00:00</pubDate>
+      <guid>https://github.com/alfredolopez80/multi-agent-ralph-loop</guid>
+    </item>
+    <item>
+      <title>mudler/LocalAI</title>
+      <link>https://github.com/mudler/LocalAI</link>
+      <description>:robot: The free, Open Source alternative to OpenAI, Claude and others. Self-hosted and local-first. Drop-in replacement,  running on consumer-grade hardware. No GPU required. Runs gguf, transformers, diffusers and many more. Features: Generate Text, MCP, Audio, Video, Images, Voice Cloning, Distri…</description>
+      <pubDate>2026-03-14T10:16:11+00:00</pubDate>
+      <guid>https://github.com/mudler/LocalAI</guid>
+    </item>
+    <item>
+      <title>microsoft/mcp-for-beginners</title>
+      <link>https://github.com/microsoft/mcp-for-beginners</link>
+      <description>This open-source curriculum introduces the fundamentals of Model Context Protocol (MCP) through real-world, cross-language examples in .NET, Java, TypeScript, JavaScript, Rust and Python. Designed for developers, it focuses on practical techniques for building modular, scalable, and secure AI workf…</description>
+      <pubDate>2026-03-14T02:07:35+00:00</pubDate>
+      <guid>https://github.com/microsoft/mcp-for-beginners</guid>
+    </item>
+    <item>
+      <title>Shopify/liquid: Performance: 53% faster parse+render, 61% fewer allocations</title>
+      <link>https://simonwillison.net/2026/Mar/13/liquid/#atom-everything</link>
+      <description>&lt;p&gt;&lt;strong&gt;&lt;a href="https://github.com/Shopify/liquid/pull/2056"&gt;Shopify/liquid: Performance: 53% faster parse+render, 61% fewer allocations&lt;/a&gt;&lt;/strong&gt;&lt;/p&gt;
+PR from Shopify CEO Tobias Lütke against Liquid, Shopify's open source Ruby template engine that was somewhat inspired by Django when Tobi fi…</description>
+      <pubDate>2026-03-13T03:44:34+00:00</pubDate>
+      <guid>https://simonwillison.net/2026/Mar/13/liquid/#atom-everything</guid>
+    </item>
+    <item>
+      <title>Coding After Coders: The End of Computer Programming as We Know It</title>
+      <link>https://simonwillison.net/2026/Mar/12/coding-after-coders/#atom-everything</link>
+      <description>&lt;p&gt;&lt;strong&gt;&lt;a href="https://www.nytimes.com/2026/03/12/magazine/ai-coding-programming-jobs-claude-chatgpt.html?unlocked_article_code=1.SlA.DBan.wbQDi-hptjj6"&gt;Coding After Coders: The End of Computer Programming as We Know It&lt;/a&gt;&lt;/strong&gt;&lt;/p&gt;
+Epic piece on AI-assisted development by Clive Thompson f…</description>
+      <pubDate>2026-03-12T19:23:44+00:00</pubDate>
+      <guid>https://simonwillison.net/2026/Mar/12/coding-after-coders/#atom-everything</guid>
+    </item>
+    <item>
+      <title>Retrieval After RAG: Hybrid Search, Agents, and Database Design — Simon Hørup Eskildsen of Turbopuffer</title>
+      <link>https://www.latent.space/p/turbopuffer</link>
+      <description>&lt;p&gt;Turbopuffer came out of a reading app.&lt;/p&gt;&lt;p&gt;In &lt;strong&gt;2022&lt;/strong&gt;, &lt;strong&gt;Simon&lt;/strong&gt; was helping his friends at Readwise scale their infra for a highly requested feature: article recommendations and semantic search. Readwise was paying &lt;strong&gt;~$5k/month&lt;/strong&gt; for their relational da…</description>
+      <pubDate>2026-03-12T22:56:01+00:00</pubDate>
+      <guid>https://www.latent.space/p/turbopuffer</guid>
+    </item>
+    <item>
+      <title>1M context is now generally available for Opus 4.6 and Sonnet 4.6</title>
+      <link>https://simonwillison.net/2026/Mar/13/1m-context/#atom-everything</link>
+      <description>&lt;p&gt;&lt;strong&gt;&lt;a href="https://claude.com/blog/1m-context-ga"&gt;1M context is now generally available for Opus 4.6 and Sonnet 4.6&lt;/a&gt;&lt;/strong&gt;&lt;/p&gt;
+Here's what surprised me:&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;Standard pricing now applies across the full 1M window for both models, with no long-context premium.&lt;/p&gt;
+&lt;/blo…</description>
+      <pubDate>2026-03-13T18:29:13+00:00</pubDate>
+      <guid>https://simonwillison.net/2026/Mar/13/1m-context/#atom-everything</guid>
+    </item>
+    <item>
+      <title>Quoting Craig Mod</title>
+      <link>https://simonwillison.net/2026/Mar/13/craig-mod/#atom-everything</link>
+      <description>&lt;blockquote cite="https://craigmod.com/essays/software_bonkers/"&gt;&lt;p&gt;Simply put: It’s a big mess, and no off-the-shelf accounting software does what I need. So after years of pain, I finally sat down last week and started to build my own. It took me about five days. I am now using the best piece of…</description>
+      <pubDate>2026-03-13T17:14:29+00:00</pubDate>
+      <guid>https://simonwillison.net/2026/Mar/13/craig-mod/#atom-everything</guid>
+    </item>
+  </channel>
+</rss>

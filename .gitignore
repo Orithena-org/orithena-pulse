@@ -6,6 +6,8 @@ data/scored.json
 data/reports/
 data/archive/
 data/digest-*.md
-output/
+output/data/
+output/logs/
+# output/site/ is tracked — GitHub Pages deploys from committed output
 .venv/
 *.egg-info/
