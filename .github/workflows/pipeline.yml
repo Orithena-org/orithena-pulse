@@ -4,7 +4,7 @@ on:
   push:
     branches: [main]
     paths:
-      - 'output/site/**'
+      - 'output/data/items.json'
   workflow_dispatch:
 
 permissions:
@@ -26,21 +26,21 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v4
 
-      - name: Verify site exists
-        run: |
-          if [ ! -f output/site/index.html ]; then
-            echo "::error::No site output found at output/site/index.html"
-            exit 1
-          fi
-          echo "Site found, deploying..."
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
 
-      - name: Add .nojekyll
-        run: touch output/site/.nojekyll
+      - name: Install dependencies
+        run: pip install jinja2
+
+      - name: Build site
+        run: python build.py
 
       - name: Upload Pages artifact
         uses: actions/upload-pages-artifact@v3
         with:
-          path: output/site
+          path: _site
 
       - name: Deploy to GitHub Pages
         id: deployment
