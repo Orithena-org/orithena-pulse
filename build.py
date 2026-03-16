@@ -26,7 +26,8 @@ SITE_DIR = ROOT / "_site"
 
 # Defaults — can be overridden via env vars
 SITE_TITLE = os.environ.get("PULSE_SITE_TITLE", "Orithena Pulse: Agentic AI")
-SITE_URL = os.environ.get("PULSE_SITE_URL", "")
+SITE_URL = os.environ.get("PULSE_SITE_URL",
+                          "https://orithena-org.github.io/orithena-pulse")
 TAGLINE = os.environ.get("PULSE_TAGLINE",
                          "Daily intelligence on AI agents, memory, orchestration, and tool use")
 
@@ -155,6 +156,36 @@ def _build_rss_feed(sections: list[dict], date_str: str) -> str:
     )
 
 
+def _generate_sitemap(date_str: str) -> str:
+    """Generate sitemap.xml for the pulse site."""
+    now = datetime.utcnow().strftime("%Y-%m-%d")
+    urls = [
+        (f"{SITE_URL}/", "daily", "1.0"),
+        (f"{SITE_URL}/about.html", "monthly", "0.5"),
+        (f"{SITE_URL}/feed.xml", "daily", "0.3"),
+    ]
+    # Add archive pages
+    archive_dir = SITE_DIR / "archive"
+    if archive_dir.exists():
+        for html_file in sorted(archive_dir.glob("*.html")):
+            name = html_file.stem
+            urls.append((f"{SITE_URL}/archive/{name}.html", "weekly", "0.6"))
+
+    lines = ['<?xml version="1.0" encoding="UTF-8"?>',
+             '<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">']
+    for url, freq, priority in urls:
+        lines.extend([
+            "  <url>",
+            f"    <loc>{url}</loc>",
+            f"    <lastmod>{now}</lastmod>",
+            f"    <changefreq>{freq}</changefreq>",
+            f"    <priority>{priority}</priority>",
+            "  </url>",
+        ])
+    lines.append("</urlset>")
+    return "\n".join(lines)
+
+
 def build() -> None:
     """Build the Orithena Pulse static site from JSON data."""
     data = _load_data()
@@ -215,6 +246,15 @@ def build() -> None:
     # RSS feed
     rss = _build_rss_feed(sections, date_str)
     (SITE_DIR / "feed.xml").write_text(rss, encoding="utf-8")
+
+    # Sitemap
+    sitemap = _generate_sitemap(date_str)
+    (SITE_DIR / "sitemap.xml").write_text(sitemap, encoding="utf-8")
+
+    # robots.txt
+    (SITE_DIR / "robots.txt").write_text(
+        f"User-agent: *\nAllow: /\nSitemap: {SITE_URL}/sitemap.xml\n",
+        encoding="utf-8")
 
     # Static assets
     if STATIC_DIR.exists():
