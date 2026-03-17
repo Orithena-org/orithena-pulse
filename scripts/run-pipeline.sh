@@ -4,7 +4,7 @@
 set -euo pipefail
 
 PULSE_ROOT="$(cd "$(dirname "$0")/.." && pwd)"
-CORE_ROOT="$(cd "$PULSE_ROOT/../orithena-core" && pwd)"
+CORE_ROOT="$(cd "$PULSE_ROOT/../orithena-org/infrastructure" && pwd)"
 
 # launchd starts with a minimal PATH — add common tool locations
 export PATH="$HOME/.local/bin:/usr/local/bin:/opt/homebrew/bin:$PATH"
