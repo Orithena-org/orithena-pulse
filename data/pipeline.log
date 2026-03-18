@@ -433,3 +433,69 @@ hint: "git config advice.addIgnoredFile false"
 11:09:19 __main__ INFO Content health metrics updated
 11:09:19 __main__ INFO Pipeline complete for pulse
 [deploy] No site changes to commit.
+08:00:04 __main__ INFO Pipeline: domain=pulse date=2026-03-18 demo=False
+/Users/georgeauto/Library/Python/3.9/lib/python/site-packages/urllib3/__init__.py:35: NotOpenSSLWarning: urllib3 v2 only supports OpenSSL 1.1.1+, currently the 'ssl' module is compiled with 'LibreSSL 2.8.3'. See: https://github.com/urllib3/urllib3/issues/3020
+  warnings.warn(
+08:00:05 content.adapters.base INFO Running adapter: hn
+08:00:17 content.adapters.hn INFO HN adapter collected 21 unique items
+08:00:17 content.adapters.base INFO Adapter hn fetched 21 items
+08:00:17 __main__ INFO Fetched 21 items from hn
+08:00:17 content.adapters.base INFO Running adapter: arxiv
+08:00:21 content.adapters.arxiv INFO arXiv adapter collected 100 items
+08:00:21 content.adapters.base INFO Adapter arxiv fetched 100 items
+08:00:21 __main__ INFO Fetched 100 items from arxiv
+08:00:21 content.adapters.base INFO Running adapter: github_trending
+08:00:48 content.adapters.github_trending INFO GitHub trending adapter collected 361 unique repos
+08:00:48 content.adapters.base INFO Adapter github_trending fetched 361 items
+08:00:48 __main__ INFO Fetched 361 items from github_trending
+08:00:48 content.adapters.base INFO Running adapter: human_queue
+08:00:48 content.adapters.human_queue INFO human_queue: collected 1 items from queue
+08:00:48 content.adapters.base INFO Adapter human_queue fetched 1 items
+08:00:48 __main__ INFO Fetched 1 items from human_queue
+08:00:48 content.adapters.base INFO Running adapter: rss
+08:00:50 content.adapters.rss WARNING RSS feed 'The Batch (deeplearning.ai)' had parse errors: <unknown>:2:4391: not well-formed (invalid token)
+08:01:04 content.adapters.rss WARNING RSS feed 'Anthropic Blog' had parse errors: <unknown>:2:3549: not well-formed (invalid token)
+08:01:08 content.adapters.rss INFO RSS adapter collected 19 items
+08:01:08 content.adapters.base INFO Adapter rss fetched 19 items
+08:01:08 __main__ INFO Fetched 19 items from rss
+08:01:09 __main__ INFO Deduped 502 -> 502 items
+08:01:09 __main__ INFO Scored 502 items, 480 passed threshold
+08:01:13 content.intelligence.fit_evaluator WARNING Claude HTTP API call failed: Expecting value: line 1 column 1 (char 0)
+08:01:13 content.intelligence.fit_evaluator INFO API unavailable -- using placeholders for all items
+08:01:13 content.intelligence.fit_evaluator INFO Evaluated fit for 480 items (API available: False)
+08:01:13 __main__ INFO Fit evaluation complete for 480 items
+08:01:13 __main__ INFO Saved 502 items to DB
+08:01:13 content.discord.poster INFO Posting 5 new items for pulse
+08:01:14 content.discord.poster INFO Posted: [AINews] Claude Cowork Dispatch: Anthropic's Answer to OpenClaw
+08:01:15 content.discord.poster INFO Posted: Why Anthropic Thinks AI Should Have Its Own Computer — Felix Rieseberg of Claude Cowork & Claude Code Desktop
+08:01:16 content.discord.poster INFO Posted: IQuest-Coder-V1 Technical Report
+08:01:17 content.discord.poster INFO Posted: Interpretable Context Methodology: Folder Structure as Agentic Architecture
+08:01:18 content.discord.poster INFO Posted: Differential Harm Propensity in Personalized LLM Agents: The Curious Case of Mental Health Disclosure
+08:01:19 content.discord.poster INFO Posted 5/5 items for pulse
+08:01:19 content.intelligence.report INFO Saved report: /Users/georgeauto/orithena/orithena-org/content/data/reports/2026-03-18/github_trending__ruvnet_ruflo.md
+08:01:19 content.intelligence.report INFO Saved report: /Users/georgeauto/orithena/orithena-org/content/data/reports/2026-03-18/rss__2c26e26504d1c490.md
+08:01:19 content.intelligence.report INFO Saved report: /Users/georgeauto/orithena/orithena-org/content/data/reports/2026-03-18/rss__f79a6840dfe770a1.md
+08:01:19 content.intelligence.report INFO Saved report: /Users/georgeauto/orithena/orithena-org/content/data/reports/2026-03-18/rss__1c7190fa19829930.md
+08:01:19 content.intelligence.report INFO Saved report: /Users/georgeauto/orithena/orithena-org/content/data/reports/2026-03-18/arxiv__2603.16733.md
+08:01:19 content.intelligence.report INFO Saved report: /Users/georgeauto/orithena/orithena-org/content/data/reports/2026-03-18/arxiv__2603.16021.md
+08:01:19 content.intelligence.report INFO Saved report: /Users/georgeauto/orithena/orithena-org/content/data/reports/2026-03-18/github_trending__MervinPraison_PraisonAI.md
+08:01:19 content.intelligence.report INFO Saved report: /Users/georgeauto/orithena/orithena-org/content/data/reports/2026-03-18/github_trending__danny-avila_LibreChat.md
+08:01:19 content.intelligence.report INFO Saved report: /Users/georgeauto/orithena/orithena-org/content/data/reports/2026-03-18/github_trending__campfirein_cipher.md
+08:01:19 content.intelligence.report INFO Saved report: /Users/georgeauto/orithena/orithena-org/content/data/reports/2026-03-18/arxiv__2603.16734.md
+08:01:19 content.intelligence.report INFO Saved report: /Users/georgeauto/orithena/orithena-org/content/data/reports/2026-03-18/arxiv__2603.16673.md
+08:01:19 content.intelligence.report INFO Saved report: /Users/georgeauto/orithena/orithena-org/content/data/reports/2026-03-18/arxiv__2603.16107.md
+08:01:19 content.intelligence.report INFO Saved report: /Users/georgeauto/orithena/orithena-org/content/data/reports/2026-03-18/github_trending__wanshuiyin_Auto-claude-code-research-in-sleep.md
+08:01:19 content.intelligence.report INFO Saved report: /Users/georgeauto/orithena/orithena-org/content/data/reports/2026-03-18/github_trending__lobehub_lobehub.md
+08:01:19 content.intelligence.report INFO Saved report: /Users/georgeauto/orithena/orithena-org/content/data/reports/2026-03-18/github_trending__mudler_LocalAI.md
+08:01:19 content.intelligence.report INFO Saved report: /Users/georgeauto/orithena/orithena-org/content/data/reports/2026-03-18/arxiv__2603.16839.md
+08:01:19 content.intelligence.report INFO Saved report: /Users/georgeauto/orithena/orithena-org/content/data/reports/2026-03-18/arxiv__2603.16289.md
+08:01:19 content.intelligence.report INFO Saved report: /Users/georgeauto/orithena/orithena-org/content/data/reports/2026-03-18/github_trending__nextlevelbuilder_goclaw.md
+08:01:19 content.intelligence.report INFO Saved report: /Users/georgeauto/orithena/orithena-org/content/data/reports/2026-03-18/github_trending__SolaceLabs_solace-agent-mesh.md
+08:01:19 content.intelligence.report INFO Saved report: /Users/georgeauto/orithena/orithena-org/content/data/reports/2026-03-18/github_trending__IBM_mcp-context-forge.md
+08:01:19 __main__ INFO Generated 20 reports
+08:01:19 __main__ INFO Wrote digest to /Users/georgeauto/orithena/orithena-pulse/output/site/digest/2026-03-18.md
+08:01:19 __main__ INFO Exported 480 items to /Users/georgeauto/orithena/orithena-pulse/output/data/items.json
+08:01:21 __main__ INFO Committed and pushed output/data/items.json
+08:01:21 __main__ INFO Content health metrics updated
+08:01:21 __main__ INFO Pipeline complete for pulse
+[deploy] No site changes to commit.
