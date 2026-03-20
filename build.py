@@ -160,6 +160,7 @@ def _build_sitemap(date_str: str, site_dir: Path) -> str:
     urls = [
         (f"{SITE_URL}/", date_str, "daily", "1.0"),
         (f"{SITE_URL}/about.html", date_str, "monthly", "0.3"),
+        (f"{SITE_URL}/archive.html", date_str, "daily", "0.6"),
         (f"{SITE_URL}/feed.xml", date_str, "daily", "0.5"),
     ]
     # Add archive pages
@@ -223,10 +224,10 @@ def build() -> None:
     # Count total items across all sections for structured data
     item_count = sum(len(s["items"]) for s in sections)
 
-    # Render index
+    # Render pages
     for tmpl_name, out_name, extra in [
         ("index.html", "index.html", {"sections": sections, "item_count": item_count}),
-        ("about.html", "about.html", {}),
+        ("about.html", "about.html", {"canonical_path": "/about.html"}),
     ]:
         try:
             tmpl = env.get_template(tmpl_name)
@@ -236,16 +237,31 @@ def build() -> None:
         except Exception as e:
             print(f"  Template {tmpl_name} failed: {e}")
 
-    # Archive
+    # Archive landing page
     archive_dir = SITE_DIR / "archive"
     archive_dir.mkdir(parents=True, exist_ok=True)
     try:
+        # Collect existing archive dates + today
+        archive_dates = sorted(
+            {f.stem for f in archive_dir.glob("*.html")} | {date_str},
+            reverse=True,
+        )
+        tmpl = env.get_template("archive.html")
+        html = tmpl.render(**base_context, dates=archive_dates, canonical_path="/archive.html")
+        (SITE_DIR / "archive.html").write_text(html, encoding="utf-8")
+        print("  Wrote archive.html")
+    except Exception as e:
+        print(f"  Template archive.html failed: {e}")
+
+    # Archive daily digest page
+    try:
         tmpl = env.get_template("index.html")
-        html = tmpl.render(**base_context, sections=sections)
+        html = tmpl.render(**base_context, sections=sections, item_count=item_count,
+                           canonical_path=f"/archive/{date_str}.html")
         (archive_dir / f"{date_str}.html").write_text(html, encoding="utf-8")
         print(f"  Wrote archive/{date_str}.html")
-    except Exception:
-        pass
+    except Exception as e:
+        print(f"  Archive digest failed: {e}")
 
     # RSS feed
     rss = _build_rss_feed(sections, date_str)

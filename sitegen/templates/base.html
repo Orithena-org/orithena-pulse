@@ -5,12 +5,12 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>{% block title %}{{ site_title }}{% endblock %}</title>
   <meta name="description" content="{{ tagline }}">
-  {% if site_url %}<link rel="canonical" href="{{ site_url }}{% block canonical_path %}/{% endblock %}">{% endif %}
+  {% if site_url %}<link rel="canonical" href="{{ site_url }}{{ canonical_path | default('/') }}">{% endif %}
   {% block meta_extra %}
   <meta property="og:title" content="{{ site_title }}">
   <meta property="og:description" content="{{ tagline }}">
   <meta property="og:type" content="website">
-  {% if site_url %}<meta property="og:url" content="{{ site_url }}/">{% endif %}
+  {% if site_url %}<meta property="og:url" content="{{ site_url }}{{ canonical_path | default('/') }}">{% endif %}
   <meta property="og:site_name" content="{{ site_title }}">
   <meta name="twitter:card" content="summary">
   <meta name="twitter:title" content="{{ site_title }}">
