@@ -72,6 +72,13 @@ a:hover { color: var(--link-h); text-decoration: underline; }
 [data-section="high-signal"] .section-title { color: #e25822; }
 [data-theme="dark"] [data-section="high-signal"] .section-title { color: #ff8c5a; }
 
+/* Share buttons */
+.item-share { display: inline-flex; gap: 0.3rem; margin-left: auto; }
+.share-btn { font-size: 0.7rem; font-weight: 600; color: var(--muted); background: var(--tag-bg); border-radius: 3px; padding: 0.1rem 0.4rem; text-decoration: none; opacity: 0; transition: opacity 0.15s; }
+.item:hover .share-btn { opacity: 1; }
+.share-btn:hover { color: var(--link); background: var(--badge-bg); text-decoration: none; }
+@media (hover: none) { .share-btn { opacity: 1; } }
+
 /* Archive list */
 .archive-list { list-style: none; }
 .archive-list li { padding: 0.4rem 0; border-bottom: 1px solid var(--border); font-size: 0.95rem; }

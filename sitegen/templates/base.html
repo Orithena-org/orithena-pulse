@@ -5,6 +5,16 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>{% block title %}{{ site_title }}{% endblock %}</title>
   <meta name="description" content="{{ tagline }}">
+  {% block meta_extra %}
+  <meta property="og:title" content="{{ site_title }}">
+  <meta property="og:description" content="{{ tagline }}">
+  <meta property="og:type" content="website">
+  {% if site_url %}<meta property="og:url" content="{{ site_url }}/">{% endif %}
+  <meta property="og:site_name" content="{{ site_title }}">
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="{{ site_title }}">
+  <meta name="twitter:description" content="{{ tagline }}">
+  {% endblock %}
   <link rel="alternate" type="application/rss+xml" title="{{ site_title }} RSS" href="{{ base_path }}/feed.xml">
   <link rel="stylesheet" href="{{ base_path }}/css/style.css">
 </head>
