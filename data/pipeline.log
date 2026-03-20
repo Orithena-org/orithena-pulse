@@ -565,3 +565,140 @@ hint: "git config advice.addIgnoredFile false"
 08:01:17 __main__ INFO Content health metrics updated
 08:01:17 __main__ INFO Pipeline complete for pulse
 [deploy] No site changes to commit.
+08:00:00 __main__ INFO Pipeline: domain=pulse date=2026-03-20 demo=False
+/Users/georgeauto/Library/Python/3.9/lib/python/site-packages/urllib3/__init__.py:35: NotOpenSSLWarning: urllib3 v2 only supports OpenSSL 1.1.1+, currently the 'ssl' module is compiled with 'LibreSSL 2.8.3'. See: https://github.com/urllib3/urllib3/issues/3020
+  warnings.warn(
+08:00:00 content.adapters.base INFO Running adapter: hn
+08:00:13 content.adapters.hn INFO HN adapter collected 20 unique items
+08:00:13 content.adapters.base INFO Adapter hn fetched 20 items
+08:00:13 __main__ INFO Fetched 20 items from hn
+08:00:13 content.adapters.base INFO Running adapter: arxiv
+08:00:44 urllib3.connectionpool WARNING Retrying (Retry(total=2, connect=None, read=None, redirect=None, status=None)) after connection broken by 'ReadTimeoutError("HTTPSConnectionPool(host='export.arxiv.org', port=443): Read timed out. (read timeout=30)")': /api/query?search_query=%28cat%3Acs.AI+OR+cat%3Acs.MA+OR+cat%3Acs.LG%29+AND+%28all%3A%22agent%22+OR+all%3A%22tool+use%22+OR+all%3A%22multi-agent%22+OR+all%3A%22autonomous%22+OR+all%3A%22memory+augmented%22+OR+all%3A%22planning%22+OR+all%3A%22reasoning%22%29&start=0&max_results=100&sortBy=submittedDate&sortOrder=descending
+08:01:16 urllib3.connectionpool WARNING Retrying (Retry(total=1, connect=None, read=None, redirect=None, status=None)) after connection broken by 'ReadTimeoutError("HTTPSConnectionPool(host='export.arxiv.org', port=443): Read timed out. (read timeout=30)")': /api/query?search_query=%28cat%3Acs.AI+OR+cat%3Acs.MA+OR+cat%3Acs.LG%29+AND+%28all%3A%22agent%22+OR+all%3A%22tool+use%22+OR+all%3A%22multi-agent%22+OR+all%3A%22autonomous%22+OR+all%3A%22memory+augmented%22+OR+all%3A%22planning%22+OR+all%3A%22reasoning%22%29&start=0&max_results=100&sortBy=submittedDate&sortOrder=descending
+08:01:50 urllib3.connectionpool WARNING Retrying (Retry(total=0, connect=None, read=None, redirect=None, status=None)) after connection broken by 'ReadTimeoutError("HTTPSConnectionPool(host='export.arxiv.org', port=443): Read timed out. (read timeout=30)")': /api/query?search_query=%28cat%3Acs.AI+OR+cat%3Acs.MA+OR+cat%3Acs.LG%29+AND+%28all%3A%22agent%22+OR+all%3A%22tool+use%22+OR+all%3A%22multi-agent%22+OR+all%3A%22autonomous%22+OR+all%3A%22memory+augmented%22+OR+all%3A%22planning%22+OR+all%3A%22reasoning%22%29&start=0&max_results=100&sortBy=submittedDate&sortOrder=descending
+08:02:21 content.adapters.arxiv ERROR Failed to fetch arXiv batch at start=0
+Traceback (most recent call last):
+  File "/Users/georgeauto/Library/Python/3.9/lib/python/site-packages/urllib3/connectionpool.py", line 534, in _make_request
+    response = conn.getresponse()
+  File "/Users/georgeauto/Library/Python/3.9/lib/python/site-packages/urllib3/connection.py", line 571, in getresponse
+    httplib_response = super().getresponse()
+  File "/Library/Developer/CommandLineTools/Library/Frameworks/Python3.framework/Versions/3.9/lib/python3.9/http/client.py", line 1349, in getresponse
+    response.begin()
+  File "/Library/Developer/CommandLineTools/Library/Frameworks/Python3.framework/Versions/3.9/lib/python3.9/http/client.py", line 316, in begin
+    version, status, reason = self._read_status()
+  File "/Library/Developer/CommandLineTools/Library/Frameworks/Python3.framework/Versions/3.9/lib/python3.9/http/client.py", line 277, in _read_status
+    line = str(self.fp.readline(_MAXLINE + 1), "iso-8859-1")
+  File "/Library/Developer/CommandLineTools/Library/Frameworks/Python3.framework/Versions/3.9/lib/python3.9/socket.py", line 704, in readinto
+    return self._sock.recv_into(b)
+  File "/Library/Developer/CommandLineTools/Library/Frameworks/Python3.framework/Versions/3.9/lib/python3.9/ssl.py", line 1241, in recv_into
+    return self.read(nbytes, buffer)
+  File "/Library/Developer/CommandLineTools/Library/Frameworks/Python3.framework/Versions/3.9/lib/python3.9/ssl.py", line 1099, in read
+    return self._sslobj.read(len, buffer)
+socket.timeout: The read operation timed out
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/Users/georgeauto/Library/Python/3.9/lib/python/site-packages/urllib3/connectionpool.py", line 787, in urlopen
+    response = self._make_request(
+  File "/Users/georgeauto/Library/Python/3.9/lib/python/site-packages/urllib3/connectionpool.py", line 536, in _make_request
+    self._raise_timeout(err=e, url=url, timeout_value=read_timeout)
+  File "/Users/georgeauto/Library/Python/3.9/lib/python/site-packages/urllib3/connectionpool.py", line 367, in _raise_timeout
+    raise ReadTimeoutError(
+urllib3.exceptions.ReadTimeoutError: HTTPSConnectionPool(host='export.arxiv.org', port=443): Read timed out. (read timeout=30)
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/Users/georgeauto/Library/Python/3.9/lib/python/site-packages/requests/adapters.py", line 644, in send
+    resp = conn.urlopen(
+  File "/Users/georgeauto/Library/Python/3.9/lib/python/site-packages/urllib3/connectionpool.py", line 871, in urlopen
+    return self.urlopen(
+  File "/Users/georgeauto/Library/Python/3.9/lib/python/site-packages/urllib3/connectionpool.py", line 871, in urlopen
+    return self.urlopen(
+  File "/Users/georgeauto/Library/Python/3.9/lib/python/site-packages/urllib3/connectionpool.py", line 871, in urlopen
+    return self.urlopen(
+  File "/Users/georgeauto/Library/Python/3.9/lib/python/site-packages/urllib3/connectionpool.py", line 841, in urlopen
+    retries = retries.increment(
+  File "/Users/georgeauto/Library/Python/3.9/lib/python/site-packages/urllib3/util/retry.py", line 535, in increment
+    raise MaxRetryError(_pool, url, reason) from reason  # type: ignore[arg-type]
+urllib3.exceptions.MaxRetryError: HTTPSConnectionPool(host='export.arxiv.org', port=443): Max retries exceeded with url: /api/query?search_query=%28cat%3Acs.AI+OR+cat%3Acs.MA+OR+cat%3Acs.LG%29+AND+%28all%3A%22agent%22+OR+all%3A%22tool+use%22+OR+all%3A%22multi-agent%22+OR+all%3A%22autonomous%22+OR+all%3A%22memory+augmented%22+OR+all%3A%22planning%22+OR+all%3A%22reasoning%22%29&start=0&max_results=100&sortBy=submittedDate&sortOrder=descending (Caused by ReadTimeoutError("HTTPSConnectionPool(host='export.arxiv.org', port=443): Read timed out. (read timeout=30)"))
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/Users/georgeauto/orithena/orithena-org/content/adapters/arxiv.py", line 50, in fetch
+    resp = self.session.get(ARXIV_API_URL, params=params, timeout=self.timeout)
+  File "/Users/georgeauto/Library/Python/3.9/lib/python/site-packages/requests/sessions.py", line 602, in get
+    return self.request("GET", url, **kwargs)
+  File "/Users/georgeauto/Library/Python/3.9/lib/python/site-packages/requests/sessions.py", line 589, in request
+    resp = self.send(prep, **send_kwargs)
+  File "/Users/georgeauto/Library/Python/3.9/lib/python/site-packages/requests/sessions.py", line 724, in send
+    history = [resp for resp in gen]
+  File "/Users/georgeauto/Library/Python/3.9/lib/python/site-packages/requests/sessions.py", line 724, in <listcomp>
+    history = [resp for resp in gen]
+  File "/Users/georgeauto/Library/Python/3.9/lib/python/site-packages/requests/sessions.py", line 265, in resolve_redirects
+    resp = self.send(
+  File "/Users/georgeauto/Library/Python/3.9/lib/python/site-packages/requests/sessions.py", line 703, in send
+    r = adapter.send(request, **kwargs)
+  File "/Users/georgeauto/Library/Python/3.9/lib/python/site-packages/requests/adapters.py", line 677, in send
+    raise ConnectionError(e, request=request)
+requests.exceptions.ConnectionError: HTTPSConnectionPool(host='export.arxiv.org', port=443): Max retries exceeded with url: /api/query?search_query=%28cat%3Acs.AI+OR+cat%3Acs.MA+OR+cat%3Acs.LG%29+AND+%28all%3A%22agent%22+OR+all%3A%22tool+use%22+OR+all%3A%22multi-agent%22+OR+all%3A%22autonomous%22+OR+all%3A%22memory+augmented%22+OR+all%3A%22planning%22+OR+all%3A%22reasoning%22%29&start=0&max_results=100&sortBy=submittedDate&sortOrder=descending (Caused by ReadTimeoutError("HTTPSConnectionPool(host='export.arxiv.org', port=443): Read timed out. (read timeout=30)"))
+08:02:21 content.adapters.arxiv INFO arXiv adapter collected 0 items
+08:02:21 content.adapters.base INFO Adapter arxiv fetched 0 items
+08:02:21 __main__ INFO Fetched 0 items from arxiv
+08:02:21 content.adapters.base INFO Running adapter: github_trending
+08:02:42 content.adapters.github_trending INFO GitHub trending adapter collected 356 unique repos
+08:02:42 content.adapters.base INFO Adapter github_trending fetched 356 items
+08:02:42 __main__ INFO Fetched 356 items from github_trending
+08:02:42 content.adapters.base INFO Running adapter: human_queue
+08:02:42 content.adapters.human_queue INFO human_queue: collected 1 items from queue
+08:02:42 content.adapters.base INFO Adapter human_queue fetched 1 items
+08:02:42 __main__ INFO Fetched 1 items from human_queue
+08:02:42 content.adapters.base INFO Running adapter: rss
+08:02:45 content.adapters.rss WARNING RSS feed 'The Batch (deeplearning.ai)' had parse errors: <unknown>:2:4391: not well-formed (invalid token)
+08:02:51 content.adapters.rss WARNING RSS feed 'Anthropic Blog' had parse errors: <unknown>:2:3549: not well-formed (invalid token)
+08:02:55 content.adapters.rss INFO RSS adapter collected 8 items
+08:02:55 content.adapters.base INFO Adapter rss fetched 8 items
+08:02:55 __main__ INFO Fetched 8 items from rss
+08:02:56 __main__ INFO Deduped 385 -> 385 items
+08:02:56 __main__ INFO Scored 385 items, 356 passed threshold
+08:03:00 content.intelligence.fit_evaluator WARNING Claude CLI failed (exit 1)
+08:03:00 content.intelligence.fit_evaluator INFO CLI unavailable -- using placeholders for all items
+08:03:00 content.intelligence.fit_evaluator INFO Evaluated fit for 356 items (API available: False)
+08:03:00 __main__ INFO Fit evaluation complete for 356 items
+08:03:00 __main__ INFO Saved 385 items to DB
+08:03:00 content.discord.poster INFO Posting 5 new items for pulse
+08:03:01 content.discord.poster INFO Posted: [AINews] Every Lab serious enough about Developers has bought their own Devtools
+08:03:02 content.discord.poster INFO Posted: microsoft/agent-framework
+08:03:03 content.discord.poster INFO Posted: sickn33/antigravity-awesome-skills
+08:03:04 content.discord.poster INFO Posted: freddy-schuetz/n8n-claw
+08:03:05 content.discord.poster INFO Posted: zhayujie/chatgpt-on-wechat
+08:03:05 content.discord.poster INFO Posted 5/5 items for pulse
+08:03:05 content.intelligence.report INFO Saved report: /Users/georgeauto/orithena/orithena-org/content/data/reports/2026-03-20/rss__5c49e02963bc52bd.md
+08:03:05 content.intelligence.report INFO Saved report: /Users/georgeauto/orithena/orithena-org/content/data/reports/2026-03-20/rss__dc919dac495b1a30.md
+08:03:05 content.intelligence.report INFO Saved report: /Users/georgeauto/orithena/orithena-org/content/data/reports/2026-03-20/github_trending__doobidoo_mcp-memory-service.md
+08:03:05 content.intelligence.report INFO Saved report: /Users/georgeauto/orithena/orithena-org/content/data/reports/2026-03-20/github_trending__ruvnet_ruflo.md
+08:03:05 content.intelligence.report INFO Saved report: /Users/georgeauto/orithena/orithena-org/content/data/reports/2026-03-20/github_trending__wanshuiyin_Auto-claude-code-research-in-sleep.md
+08:03:05 content.intelligence.report INFO Saved report: /Users/georgeauto/orithena/orithena-org/content/data/reports/2026-03-20/github_trending__lobehub_lobehub.md
+08:03:05 content.intelligence.report INFO Saved report: /Users/georgeauto/orithena/orithena-org/content/data/reports/2026-03-20/github_trending__mudler_LocalAI.md
+08:03:05 content.intelligence.report INFO Saved report: /Users/georgeauto/orithena/orithena-org/content/data/reports/2026-03-20/github_trending__danny-avila_LibreChat.md
+08:03:05 content.intelligence.report INFO Saved report: /Users/georgeauto/orithena/orithena-org/content/data/reports/2026-03-20/github_trending__liyupi_ai-guide.md
+08:03:05 content.intelligence.report INFO Saved report: /Users/georgeauto/orithena/orithena-org/content/data/reports/2026-03-20/github_trending__nextlevelbuilder_goclaw.md
+08:03:05 content.intelligence.report INFO Saved report: /Users/georgeauto/orithena/orithena-org/content/data/reports/2026-03-20/github_trending__massgen_MassGen.md
+08:03:05 content.intelligence.report INFO Saved report: /Users/georgeauto/orithena/orithena-org/content/data/reports/2026-03-20/github_trending__SolaceLabs_solace-agent-mesh.md
+08:03:05 content.intelligence.report INFO Saved report: /Users/georgeauto/orithena/orithena-org/content/data/reports/2026-03-20/github_trending__IBM_mcp-context-forge.md
+08:03:05 content.intelligence.report INFO Saved report: /Users/georgeauto/orithena/orithena-org/content/data/reports/2026-03-20/github_trending__Arvincreator_project-golem.md
+08:03:05 content.intelligence.report INFO Saved report: /Users/georgeauto/orithena/orithena-org/content/data/reports/2026-03-20/github_trending__affaan-m_everything-claude-code.md
+08:03:05 content.intelligence.report INFO Saved report: /Users/georgeauto/orithena/orithena-org/content/data/reports/2026-03-20/github_trending__MervinPraison_PraisonAI.md
+08:03:05 content.intelligence.report INFO Saved report: /Users/georgeauto/orithena/orithena-org/content/data/reports/2026-03-20/github_trending__labring_FastGPT.md
+08:03:05 content.intelligence.report INFO Saved report: /Users/georgeauto/orithena/orithena-org/content/data/reports/2026-03-20/github_trending__microsoft_agent-framework.md
+08:03:05 content.intelligence.report INFO Saved report: /Users/georgeauto/orithena/orithena-org/content/data/reports/2026-03-20/github_trending__infiniflow_ragflow.md
+08:03:05 content.intelligence.report INFO Saved report: /Users/georgeauto/orithena/orithena-org/content/data/reports/2026-03-20/github_trending__AgriciDaniel_claude-seo.md
+08:03:05 __main__ INFO Generated 20 reports
+08:03:05 __main__ INFO Wrote digest to /Users/georgeauto/orithena/orithena-pulse/output/site/digest/2026-03-20.md
+08:03:05 __main__ INFO Exported 356 items to /Users/georgeauto/orithena/orithena-pulse/output/data/items.json
+08:03:07 __main__ INFO Committed and pushed output/data/items.json
+08:03:07 __main__ INFO Content health metrics updated
+08:03:07 __main__ INFO Pipeline complete for pulse
+[deploy] No site changes to commit.
