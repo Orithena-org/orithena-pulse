@@ -47,6 +47,11 @@
           {% endfor %}
         </span>
         {% endif %}
+        <span class="item-share">
+          <a href="https://twitter.com/intent/tweet?text={{ si.item.title | urlencode }}&url={{ si.item.url | urlencode }}" target="_blank" rel="noopener" title="Share on X" class="share-btn">X</a>
+          <a href="https://www.linkedin.com/sharing/share-offsite/?url={{ si.item.url | urlencode }}" target="_blank" rel="noopener" title="Share on LinkedIn" class="share-btn">in</a>
+          <a href="https://news.ycombinator.com/submitlink?u={{ si.item.url | urlencode }}&t={{ si.item.title | urlencode }}" target="_blank" rel="noopener" title="Submit to HN" class="share-btn">HN</a>
+        </span>
       </div>
     </li>
     {% endfor %}
