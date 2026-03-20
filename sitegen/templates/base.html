@@ -5,6 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>{% block title %}{{ site_title }}{% endblock %}</title>
   <meta name="description" content="{{ tagline }}">
+  {% if site_url %}<link rel="canonical" href="{{ site_url }}{% block canonical_path %}/{% endblock %}">{% endif %}
   {% block meta_extra %}
   <meta property="og:title" content="{{ site_title }}">
   <meta property="og:description" content="{{ tagline }}">
@@ -15,6 +16,7 @@
   <meta name="twitter:title" content="{{ site_title }}">
   <meta name="twitter:description" content="{{ tagline }}">
   {% endblock %}
+  {% block jsonld %}{% endblock %}
   <link rel="alternate" type="application/rss+xml" title="{{ site_title }} RSS" href="{{ base_path }}/feed.xml">
   <link rel="stylesheet" href="{{ base_path }}/css/style.css">
 </head>

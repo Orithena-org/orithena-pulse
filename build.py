@@ -155,6 +155,38 @@ def _build_rss_feed(sections: list[dict], date_str: str) -> str:
     )
 
 
+def _build_sitemap(date_str: str, site_dir: Path) -> str:
+    """Generate sitemap.xml listing all pages."""
+    urls = [
+        (f"{SITE_URL}/", date_str, "daily", "1.0"),
+        (f"{SITE_URL}/about.html", date_str, "monthly", "0.3"),
+        (f"{SITE_URL}/feed.xml", date_str, "daily", "0.5"),
+    ]
+    # Add archive pages
+    archive_dir = site_dir / "archive"
+    if archive_dir.exists():
+        for f in sorted(archive_dir.glob("*.html")):
+            archive_date = f.stem  # e.g. 2026-03-20
+            urls.append((f"{SITE_URL}/archive/{f.name}", archive_date, "never", "0.4"))
+
+    entries = []
+    for loc, lastmod, freq, priority in urls:
+        entries.append(
+            f"  <url>\n"
+            f"    <loc>{xml_escape(loc)}</loc>\n"
+            f"    <lastmod>{lastmod}</lastmod>\n"
+            f"    <changefreq>{freq}</changefreq>\n"
+            f"    <priority>{priority}</priority>\n"
+            f"  </url>"
+        )
+    return (
+        '<?xml version="1.0" encoding="UTF-8"?>\n'
+        '<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n'
+        f"{chr(10).join(entries)}\n"
+        "</urlset>\n"
+    )
+
+
 def build() -> None:
     """Build the Orithena Pulse static site from JSON data."""
     data = _load_data()
@@ -188,9 +220,12 @@ def build() -> None:
 
     sections = _build_sections(items)
 
+    # Count total items across all sections for structured data
+    item_count = sum(len(s["items"]) for s in sections)
+
     # Render index
     for tmpl_name, out_name, extra in [
-        ("index.html", "index.html", {"sections": sections}),
+        ("index.html", "index.html", {"sections": sections, "item_count": item_count}),
         ("about.html", "about.html", {}),
     ]:
         try:
@@ -215,6 +250,18 @@ def build() -> None:
     # RSS feed
     rss = _build_rss_feed(sections, date_str)
     (SITE_DIR / "feed.xml").write_text(rss, encoding="utf-8")
+
+    # Sitemap
+    sitemap = _build_sitemap(date_str, SITE_DIR)
+    (SITE_DIR / "sitemap.xml").write_text(sitemap, encoding="utf-8")
+    print("  Wrote sitemap.xml")
+
+    # robots.txt
+    robots_lines = ["User-agent: *", "Allow: /"]
+    if SITE_URL:
+        robots_lines.append(f"Sitemap: {SITE_URL}/sitemap.xml")
+    (SITE_DIR / "robots.txt").write_text("\n".join(robots_lines) + "\n", encoding="utf-8")
+    print("  Wrote robots.txt")
 
     # Static assets
     if STATIC_DIR.exists():

@@ -2,6 +2,60 @@
 
 {% block title %}{{ site_title }} &mdash; {{ date_str }}{% endblock %}
 
+{% block jsonld %}
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "WebSite",
+  "name": "{{ site_title }}",
+  "description": "{{ tagline }}",
+  {% if site_url %}"url": "{{ site_url }}/",{% endif %}
+  "publisher": {
+    "@type": "Organization",
+    "name": "Orithena"
+  }
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "CollectionPage",
+  "name": "{{ site_title }} — {{ date_str }}",
+  "description": "{{ tagline }}",
+  {% if site_url %}"url": "{{ site_url }}/",{% endif %}
+  "datePublished": "{{ date_str }}",
+  "mainEntity": {
+    "@type": "ItemList",
+    "numberOfItems": {{ item_count }},
+    "itemListElement": [
+      {% set ns = namespace(pos=0, all_items=[]) %}
+      {% for section in sections %}
+      {% for si in section["items"] %}
+      {% set ns.pos = ns.pos + 1 %}
+      {% set _ = ns.all_items.append(si) %}
+      {% endfor %}
+      {% endfor %}
+      {% for si in ns.all_items %}
+      {
+        "@type": "ListItem",
+        "position": {{ loop.index }},
+        "item": {
+          "@type": "Article",
+          "headline": {{ si.item.title | tojson }},
+          "url": "{{ si.item.url }}",
+          {% if si.item.description %}"description": {{ si.item.description | truncate_desc | tojson }},{% endif %}
+          {% if si.item.published_at %}"datePublished": "{{ si.item.published_at }}",{% endif %}
+          {% if si.item.author %}"author": {"@type": "Person", "name": {{ si.item.author | tojson }}},{% endif %}
+          "publisher": {"@type": "Organization", "name": "{{ si.item.source }}"}
+        }
+      }{% if not loop.last %},{% endif %}
+      {% endfor %}
+    ]
+  }
+}
+</script>
+{% endblock %}
+
 {% block content %}
 <div class="digest-header">
   <h1>{{ site_title }}</h1>
