@@ -6,6 +6,7 @@ data/scored.json
 data/reports/
 data/archive/
 data/digest-*.md
+data/pipeline.log
 output/logs/
 output/site/
 _site/
