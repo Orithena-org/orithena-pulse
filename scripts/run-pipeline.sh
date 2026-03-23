@@ -22,6 +22,16 @@ python3 -u -m content.pipeline --domain pulse
 
 # --- Deploy: commit and push site output if changed ---
 cd "$PULSE_ROOT"
+
+# Ensure we're on main — if a Scout branch was left checked out, commits
+# would go to the wrong branch and the push would silently push stale data.
+current_branch=$(git rev-parse --abbrev-ref HEAD)
+if [[ "$current_branch" != "main" ]]; then
+    echo "[deploy] WARNING: was on branch '$current_branch', switching to main"
+    git checkout main
+    git pull origin main
+fi
+
 if ! git diff --quiet output/site/ 2>/dev/null || [ -n "$(git ls-files --others --exclude-standard output/site/)" ]; then
     git add output/site/
     git commit -m "chore(site): update generated site output $(date +%Y-%m-%d)"
