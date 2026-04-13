@@ -5,6 +5,8 @@ on:
     branches: [main]
     paths:
       - 'output/data/items.json'
+      - 'build.py'
+      - 'sitegen/templates/**'
   workflow_dispatch:
 
 permissions:
