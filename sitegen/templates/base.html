@@ -47,5 +47,8 @@
   </footer>
 
   <script src="{{ base_path }}/js/main.js"></script>
+  {% if goatcounter_site %}
+  <script data-goatcounter="https://{{ goatcounter_site }}.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
+  {% endif %}
 </body>
 </html>

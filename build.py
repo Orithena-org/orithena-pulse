@@ -29,6 +29,7 @@ SITE_TITLE = os.environ.get("PULSE_SITE_TITLE", "Orithena Pulse: Agentic AI")
 SITE_URL = os.environ.get("PULSE_SITE_URL", "")
 TAGLINE = os.environ.get("PULSE_TAGLINE",
                          "Daily intelligence on AI agents, memory, orchestration, and tool use")
+GOATCOUNTER_SITE = os.environ.get("PULSE_GOATCOUNTER_SITE", "georgeauto")
 
 
 class AttrDict(dict):
@@ -217,6 +218,7 @@ def build() -> None:
         "base_path": "",
         "tagline": TAGLINE,
         "date_str": date_str,
+        "goatcounter_site": GOATCOUNTER_SITE,
     }
 
     sections = _build_sections(items)
