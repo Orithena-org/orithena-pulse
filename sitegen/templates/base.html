@@ -12,9 +12,13 @@
   <meta property="og:type" content="website">
   {% if site_url %}<meta property="og:url" content="{{ site_url }}{{ canonical_path | default('/') }}">{% endif %}
   <meta property="og:site_name" content="{{ site_title }}">
-  <meta name="twitter:card" content="summary">
+  {% if site_url %}<meta property="og:image" content="{{ site_url }}/images/og-default.png">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">{% endif %}
+  <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:title" content="{{ site_title }}">
   <meta name="twitter:description" content="{{ tagline }}">
+  {% if site_url %}<meta name="twitter:image" content="{{ site_url }}/images/og-default.png">{% endif %}
   {% endblock %}
   {% block jsonld %}{% endblock %}
   <link rel="alternate" type="application/rss+xml" title="{{ site_title }} RSS" href="{{ base_path }}/feed.xml">
