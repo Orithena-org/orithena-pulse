@@ -38,6 +38,8 @@ jobs:
 
       - name: Build site
         run: python build.py
+        env:
+          PULSE_SITE_URL: https://orithena-org.github.io/orithena-pulse
 
       - name: Upload Pages artifact
         uses: actions/upload-pages-artifact@v4
